@@ -1,0 +1,105 @@
+﻿@model IEnumerable<AdminLteMvc.Problema_Visita>
+
+@{
+    
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+
+<script language="javascript">
+    function doSearch() {
+        var tableReg = document.getElementById('datos');
+        var searchText = document.getElementById('searchTerm').value.toLowerCase();
+        var cellsOfRow = "";
+        var found = false;
+        var compareWith = "";
+
+        // Recorre todas las filas con contenido de la tabla
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            found = false;
+            // Recorre todas las celdas
+            for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Busca el texto en el contenido de la celda
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">LISTADO DE PROBLEMAS EN PUBLICIDAD</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-8">
+                                <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                <INPUT placeholder="Buscar Problema " type="text" id="searchTerm" onkeyup="doSearch()">
+
+                                <a href="~/Problema_Visita/Create"> <i class="glyphicon-list-alt"></i> Nuevo Problema </a>
+
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <table id="datos" class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Actualizar", "Edit", new { id = item.CodigoProblema }) |
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.CodigoProblema }) |
+                                   @* @Html.ActionLink("Delete", "Delete", new { id = item.CodigoProblema })*@
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>*@
+                @* <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>*@
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.col -->

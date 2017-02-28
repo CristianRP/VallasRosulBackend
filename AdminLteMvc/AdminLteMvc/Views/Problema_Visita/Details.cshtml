@@ -1,0 +1,35 @@
+﻿@model AdminLteMvc.Problema_Visita
+
+@{
+    
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PROBLEMA PUBLICIDAD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.CodigoProblema }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

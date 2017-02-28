@@ -1,0 +1,139 @@
+﻿@model AdminLteMvc.Publicidad
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Publicidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ancho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ancho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCambioImagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCambioImagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Demo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Demo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoBusqueda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoBusqueda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calendario_Periodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calendario_Periodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proyectos_Ubicaciones.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZonaGeografica.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodigoPublicidad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

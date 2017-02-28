@@ -1,0 +1,118 @@
+﻿@model IEnumerable<AdminLteMvc.Publicidad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ancho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCambioImagen)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.imagen)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Demo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoBusqueda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calendario_Periodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrato.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ancho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCambioImagen)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.imagen)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Demo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoBusqueda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calendario_Periodo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrato.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proyectos_Ubicaciones.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZonaGeografica.Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoPublicidad }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodigoPublicidad }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPublicidad })
+        </td>
+    </tr>
+}
+
+</table>

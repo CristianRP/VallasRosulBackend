@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/logincss")
+@Scripts.Render("~/bundles/loginjs")
+
+<div class="container">
+
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+        <div class="row">
+            <div class="iconmelon">
+                <svg viewBox="0 0 173 164">
+                    <g filter="">
+                        <use xlink:href="#frutal"></use>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title text-center">El Frutal Complejo Comercial</div>
+            </div>
+
+            <div class="panel-body">
+
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="user" type="text" class="form-control" name="username" value="" placeholder="Usuario">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="password" class="form-control" name="pass" placeholder="Contraseña">
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            @*<button href="~/VisitasPublicidad/VisitasPublicidad" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Iniciar Sesión</button>*@
+                             <button href="~/VisitasPublicidad/VisitasPublicidad" type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Iniciar Sesión</button>
+                            @* <a href="~/VisitasPublicidad/VisitasPublicidad"><i class="fa fa-circle-o"></i> Registro de Visitas </a>*@
+                            @Html.ActionLink("VisitasPublicidad", "/VisitasPublicidad/VisitasPublicidad")
+                           @* return RedirectToAction("VisitasPublicidad", "VisitasPublicidad");*@
+                            <div>
+                                <p>
+                                    Ir a menu inicio @Html.ActionLink("click here to log in", "VisitasPublicidad", "VisitasPublicidad", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

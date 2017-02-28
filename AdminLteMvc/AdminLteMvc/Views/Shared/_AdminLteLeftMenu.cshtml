@@ -1,0 +1,93 @@
+﻿@* 
+ This partial controls the left menu of the AdminLTE dashboard and is called automatically by _AdminLteLayout
+    This is where you can add, modify, or remove navigation options in your app
+    TODO: This preserves the links as-is for the demo, which lead to broken pages!
+    It's up to you to make sure these links either get deleted or lead somewhere REAL!
+*@
+
+
+@{
+    Layout = null;
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/Content/AdminLTE/img/user2-160x160.JPG" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+                <p>Supervisor Vallas</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+       
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+         <ul class="sidebar-menu">
+            <li class="header">MENU PRINCIPAL</li>
+            <li class="active treeview">
+
+
+                <a>
+                <i class="fa fa-dashboard"></i> <span>Datos Maestros</span><i class="fa fa-angle-left pull-right"> </i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="~/ZonaGeograficas/Index"><i class="fa fa-circle-o"></i> Zonas Geograficas </a>
+                        <a href="~/Proyectos_Ubicaciones/Index"><i class="fa fa-circle-o"></i> Proyectos </a>
+                        <a href="~/Problema_Visita/Index"><i class="fa fa-circle-o"></i>Lista de Problemas </a>
+                        <a href="~/Supervisors/Index"><i class="fa fa-circle-o"></i> Supervisores </a>
+                        <a href="~/Proveedores/Index"><i class="fa fa-circle-o"></i> Proveedores </a>
+
+                       </li>
+                </ul>
+                
+
+                <a>
+                    <i class="fa fa-dashboard"></i> <span>Configuracion</span><i class="fa fa-angle-left pull-right"> </i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+
+                        <a href="~/Contratoes/Index"><i class="fa fa-circle-o"></i> Contrato </a>
+                        <a href="~/Publicidads/Index"><i class="fa fa-circle-o"></i> Publicidad </a>
+                         
+                    </li>
+                </ul>
+                 
+                <a>
+                    <i class="fa fa-dashboard"></i> <span>Control de pagos</span><i class="fa fa-angle-left pull-right"> </i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+
+                          
+                        <a href="~/ContratosPagosJS/ContratosPagos"><i class="fa fa-circle-o"></i> Pago a proveedores</a>
+  
+                    </li>
+                </ul>
+                <a>
+                    <i class="fa fa-dashboard"></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"> </i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                         
+                        <a href="~/VisitasPublicidad/VisitasPublicidad"><i class="fa fa-circle-o"></i> Registro de Visitas </a>
+                        <a href="~/BusquedaPorMapas/BusquedaPorMapaIndex"><i class="fa fa-circle-o"></i> Mapa - Listado de vallas</a>
+                        <a href="~/Geoposicion/Index"><i class="fa fa-circle-o"></i> Mapa - Supervision Vallas</a>
+                        <a href="~/BusquedaPOrMapasContratos/Index"><i class="fa fa-circle-o"></i> Mapa - Contratos Vallas</a>
+                         
+                    </li>
+                </ul>
+              
+            <li class="header">Etiquetas</li>
+            <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Alertas</a></li>
+            </ul>
+                
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,158 @@
+﻿
+@section scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/MapaProyecto")
+}
+
+@{
+    ViewBag.Title = "UBICAR VALLAS POR PROYECTO";
+
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+   
+        <label>SELECCIONE EL PROYECTO</label>
+        <div >
+            <select  class="form-control select2" style="width: 200%;" data-bind="value: selectedProject, options: ProyectosUbicaciones,
+                    optionsText: 'Descripcion',
+                    optionsValue: 'CodigoProyecto'"></select>
+          
+        </div><!-- /.col -->
+     
+    @*<div data-bind="foreach: visitasDetalle">
+        <label data-bind="text: Longitud" id="lblLAt"></label>
+        <label data-bind="text: Latitud" id="lblLAt"></label>
+    </div>*@
+    <div id="map" data-bind="style:{width:'1000px',height:'500px'}"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHguNzrySXRe68RbN26z9JSzKpz4XYPLc"
+            async defer></script>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">LISTADO DE VISITAS Y SUPERVISION </h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <form>
+                        <div class="form-group form-group-label">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#" id="test" class="fa fa-file-excel-o" onClick="javascript:fnExcelReport();">  Descargar Excel</a>
+
+
+                    <script lang="js">
+                        function fnExcelReport() {
+                            var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+                            tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+
+                            tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+
+                            tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+                            tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+
+                            tab_text = tab_text + "<table border='1px'>";
+                            tab_text = tab_text + $('#resultados').html();
+                            tab_text = tab_text + '</table></body></html>';
+
+                            var data_type = 'data:application/vnd.ms-excel';
+
+                            var ua = window.navigator.userAgent;
+                            var msie = ua.indexOf("MSIE ");
+
+                            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+                                if (window.navigator.msSaveBlob) {
+                                    var blob = new Blob([tab_text], {
+                                        type: "application/csv;charset=utf-8;"
+                                    });
+                                    navigator.msSaveBlob(blob, 'Listado Visitas .xls');
+                                }
+                            } else {
+                                $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+                                $('#test').attr('download', 'Listado Visitas.xls');
+                            }
+
+                        }
+                    </script>
+                    <div class="table-responsive">
+
+
+                        <div class="form-panel tablaResultados">
+
+                            <table id="resultados" class="table table-bordered table-striped table-condensed cf display">
+
+
+
+                                <thead>
+                                    <tr>
+                                        @*<th>SEGUIMIENTO </th>*@
+                                        <th>CODIGO VALLA</th>
+                                        <th>DESCRIPCION VALLA</th>
+                                        <th>DIRECCION VALLA</th>
+                                        <th>MEDIDAS</th> 
+                                        <th>FECHA INICIO</th>
+                                        <th>FECHA FIN</th>
+                                         
+                                        <th>CONTRATO</th>
+                                        <th>PROVEEDOR</th>
+                                        @*<th>NoContrato</th>
+                                            <th>Proveedor</th>
+                                            <th>FechaInicio</th>
+                                            <th>FechaFIn</th>
+                                            <th>Latitud</th>
+                                            <th>Longitud</th>*@
+                                        @*  <th>Resultado</th>*@
+                                    </tr>
+                                </thead>
+
+                                @*<div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>*@
+                                <tbody data-bind="foreach: visitasDetalle">
+                                    <tr>
+
+                                        @*<td>  <a class="btn btn-primary"  href="~/Tareas/Create" style="width:90px">Crear Tarea</a></td>*@
+
+                                        @*  <td>  <a class="fa fa-hand-o-right" data-bind=" text: NoVisita" href="~/VistaDetalleVisita/VistaDetalleVisita"></a></td>*@
+ 
+                                        @*<td data-bind="text: Valla"></td>*@
+                                        <td data-bind="text: CodigoPublicidad"></td>
+                                        <td data-bind="text: Ancho"></td>
+                                        <td data-bind="text: Direccion"></td>
+                                        <td data-bind="text: Alto"></td>
+                                        @*<td data-bind="text: Codigo_Publicidad"></td>*@
+                                       
+                               
+                                        <td data-bind="text: FechaInicio"></td>
+                                        <td data-bind="text: FechaInicio"></td>
+                                        <td data-bind="text: Contrato"></td>
+                                        <td data-bind="text: Proveedor"></td>
+                                        
+                                        @*  <td> <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>*@
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>*@
+                @* <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>*@
+
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+
+</div><!-- /.col -->

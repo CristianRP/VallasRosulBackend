@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BarreraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+          </Key>
+          <Property Name="CODIGO_DEPARTAMENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Codigo_Empleado" />
+          </Key>
+          <Property Name="Codigo_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="int" />
+          <Property Name="Codigo_Empresa" Type="int" />
+          <Property Name="Codigo_Puesto" Type="int" />
+          <Property Name="Primer_Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Segundo_Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Primer_Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Segundo_Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sexo" Type="nchar" MaxLength="15" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="60" />
+          <Property Name="Codigo_Empleado_Externo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportID" Type="int" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Codigo_Empresa" />
+          </Key>
+          <Property Name="Codigo_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Codigo_Empresa_Externo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Equipo_Proyecto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Puesto" Type="nvarchar" MaxLength="150" />
+          <Property Name="ReportID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Codigo_Empleado" Type="int" />
+          <Property Name="Codigo_Proyecto" Type="int" />
+          <Property Name="Designacion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Codigo_Empresa" Type="int" />
+        </EntityType>
+        <EntityType Name="Organigrama_Proyecto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Codigo_Empleado" Type="int" />
+          <Property Name="Padre" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Codigo_Proyecto" Type="int" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="Codigo_Proyecto" />
+          </Key>
+          <Property Name="Codigo_Proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Financiero" Type="nchar" MaxLength="2" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Medicion" Type="nchar" MaxLength="10" />
+          <Property Name="Peso" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fecha_Creacion" Type="datetime" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="Codigo_Empleado_Creador" Type="int" />
+          <Property Name="Codigo_Empleado_Lider" Type="int" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="Codigo_Puesto" />
+          </Key>
+          <Property Name="Codigo_Puesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Codigo_Puesto_Externo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea" />
+          </Key>
+          <Property Name="Codigo_Tarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Codigo_Empleado" Type="int" />
+          <Property Name="Codigo_Proyecto" Type="int" />
+          <Property Name="Fecha_Creacion" Type="datetime" />
+          <Property Name="Fecha_Inicio" Type="datetime" />
+          <Property Name="Fecha_Fin" Type="datetime" />
+          <Property Name="Padre" Type="int" />
+          <Property Name="Codigo_Empleado_Asignado" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tarea_Log">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea_Log" />
+          </Key>
+          <Property Name="Codigo_Tarea_Log" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Tarea" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Codigo_Empleado" Type="int" />
+        </EntityType>
+        <EntityType Name="Tarea_Mensaje">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea_Mensaje" />
+          </Key>
+          <Property Name="Codigo_Tarea_Mensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Tarea" Type="int" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Codigo_Empleado" Type="int" />
+          <Property Name="Reaccion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Empleado_Departamento1">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Empleado1" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Empleado1">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Codigo_Empresa" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Puesto">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="Codigo_Puesto" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Proyecto_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Equipo_Proyecto" Type="Self.Equipo_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Equipo_Proyecto">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Proyecto_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="0..1" />
+          <End Role="Equipo_Proyecto" Type="Self.Equipo_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Principal>
+            <Dependent Role="Equipo_Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="Codigo_Empleado_Creador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Empleado1">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="Codigo_Empleado_Lider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Log_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="0..1" />
+          <End Role="Tarea_Log" Type="Self.Tarea_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Principal>
+            <Dependent Role="Tarea_Log">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Mensaje_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="0..1" />
+          <End Role="Tarea_Mensaje" Type="Self.Tarea_Mensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Principal>
+            <Dependent Role="Tarea_Mensaje">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="0..1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarreraModelStoreContainer">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipo_Proyecto" EntityType="Self.Equipo_Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organigrama_Proyecto" EntityType="Self.Organigrama_Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarea_Log" EntityType="Self.Tarea_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarea_Mensaje" EntityType="Self.Tarea_Mensaje" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Empleado_Departamento1" Association="Self.FK_Empleado_Departamento1">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Empleado" Association="Self.FK_Empleado_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Empleado1" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Empresa" Association="Self.FK_Empleado_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Puesto" Association="Self.FK_Empleado_Puesto">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Proyecto_Empleado" Association="Self.FK_Equipo_Proyecto_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Equipo_Proyecto" EntitySet="Equipo_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Proyecto_Proyecto" Association="Self.FK_Equipo_Proyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Equipo_Proyecto" EntitySet="Equipo_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Empleado" Association="Self.FK_Proyecto_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Empleado1" Association="Self.FK_Proyecto_Empleado1">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Empleado" Association="Self.FK_Tarea_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Log_Tarea" Association="Self.FK_Tarea_Log_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Tarea_Log" EntitySet="Tarea_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Mensaje_Tarea" Association="Self.FK_Tarea_Mensaje_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Tarea_Mensaje" EntitySet="Tarea_Mensaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Proyecto" Association="Self.FK_Tarea_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BarreraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Codigo_Empleado" />
+          </Key>
+          <Property Name="Codigo_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Departamento" Type="Int32" />
+          <Property Name="Codigo_Empresa" Type="Int32" />
+          <Property Name="Codigo_Puesto" Type="Int32" />
+          <Property Name="Primer_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Segundo_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Primer_Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Segundo_Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Empleado_Externo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportID" Type="Int32" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleado_Empresa" FromRole="Empleado" ToRole="Empresa" />
+          <NavigationProperty Name="Puesto" Relationship="Self.FK_Empleado_Puesto" FromRole="Empleado" ToRole="Puesto" />
+          <NavigationProperty Name="Equipo_Proyecto" Relationship="Self.FK_Equipo_Proyecto_Empleado" FromRole="Empleado" ToRole="Equipo_Proyecto" />
+          <NavigationProperty Name="Tarea" Relationship="Self.FK_Tarea_Empleado" FromRole="Empleado" ToRole="Tarea" />
+          <NavigationProperty Name="Departamento" Relationship="BarreraModel.FK_Empleado_Departamento" FromRole="Empleado" ToRole="Departamento" />
+          <NavigationProperty Name="Empleado1" Relationship="BarreraModel.FK_Empleado_Empleado" FromRole="Empleado" ToRole="Empleado1" />
+          <NavigationProperty Name="Empleado2" Relationship="BarreraModel.FK_Empleado_Empleado" FromRole="Empleado1" ToRole="Empleado" />
+          <NavigationProperty Name="Proyecto" Relationship="BarreraModel.FK_Proyecto_Empleado" FromRole="Empleado" ToRole="Proyecto" />
+          <NavigationProperty Name="Proyecto1" Relationship="BarreraModel.FK_Proyecto_Empleado1" FromRole="Empleado" ToRole="Proyecto" />
+          </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Codigo_Empresa" />
+          </Key>
+          <Property Name="Codigo_Empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Empresa_Externo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Empresa" FromRole="Empresa" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Equipo_Proyecto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Puesto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReportID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Empleado" Type="Int32" />
+          <Property Name="Codigo_Proyecto" Type="Int32" />
+          <Property Name="Designacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Empresa" Type="Int32" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Equipo_Proyecto_Empleado" FromRole="Equipo_Proyecto" ToRole="Empleado" />
+          <NavigationProperty Name="Proyecto" Relationship="BarreraModel.FK_Equipo_Proyecto_Proyecto" FromRole="Equipo_Proyecto" ToRole="Proyecto" />
+          </EntityType>
+        <EntityType Name="Organigrama_Proyecto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Empleado" Type="Int32" />
+          <Property Name="Padre" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Codigo_Proyecto" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="Codigo_Puesto" />
+          </Key>
+          <Property Name="Codigo_Puesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Puesto_Externo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Puesto" FromRole="Puesto" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea" />
+          </Key>
+          <Property Name="Codigo_Tarea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Empleado" Type="Int32" />
+          <Property Name="Codigo_Proyecto" Type="Int32" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Precision="3" />
+          <Property Name="Fecha_Fin" Type="DateTime" Precision="3" />
+          <Property Name="Padre" Type="Int32" />
+          <Property Name="Codigo_Empleado_Asignado" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Tarea_Empleado" FromRole="Tarea" ToRole="Empleado" />
+          <NavigationProperty Name="Tarea_Log" Relationship="Self.FK_Tarea_Log_Tarea" FromRole="Tarea" ToRole="Tarea_Log" />
+          <NavigationProperty Name="Tarea_Mensaje" Relationship="Self.FK_Tarea_Mensaje_Tarea" FromRole="Tarea" ToRole="Tarea_Mensaje" />
+          <NavigationProperty Name="Proyecto" Relationship="BarreraModel.FK_Tarea_Proyecto" FromRole="Tarea" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Tarea_Log">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea_Log" />
+          </Key>
+          <Property Name="Codigo_Tarea_Log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Tarea" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Codigo_Empleado" Type="Int32" />
+          <NavigationProperty Name="Tarea" Relationship="Self.FK_Tarea_Log_Tarea" FromRole="Tarea_Log" ToRole="Tarea" />
+        </EntityType>
+        <EntityType Name="Tarea_Mensaje">
+          <Key>
+            <PropertyRef Name="Codigo_Tarea_Mensaje" />
+          </Key>
+          <Property Name="Codigo_Tarea_Mensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Tarea" Type="Int32" />
+          <Property Name="Mensaje" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Codigo_Empleado" Type="Int32" />
+          <Property Name="Reaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tarea" Relationship="Self.FK_Tarea_Mensaje_Tarea" FromRole="Tarea_Mensaje" ToRole="Tarea" />
+        </EntityType>
+        <Association Name="FK_Empleado_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Codigo_Empresa" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Puesto">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="Codigo_Puesto" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Proyecto_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Equipo_Proyecto" Type="Self.Equipo_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Equipo_Proyecto">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Log_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="0..1" />
+          <End Role="Tarea_Log" Type="Self.Tarea_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Principal>
+            <Dependent Role="Tarea_Log">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Mensaje_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="0..1" />
+          <End Role="Tarea_Mensaje" Type="Self.Tarea_Mensaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Principal>
+            <Dependent Role="Tarea_Mensaje">
+              <PropertyRef Name="Codigo_Tarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarreraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Equipo_Proyecto" EntityType="Self.Equipo_Proyecto" />
+          <EntitySet Name="Organigrama_Proyecto" EntityType="Self.Organigrama_Proyecto" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" />
+          <EntitySet Name="Tarea_Log" EntityType="Self.Tarea_Log" />
+          <EntitySet Name="Tarea_Mensaje" EntityType="Self.Tarea_Mensaje" />
+          <AssociationSet Name="FK_Empleado_Empresa" Association="Self.FK_Empleado_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Puesto" Association="Self.FK_Empleado_Puesto">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Proyecto_Empleado" Association="Self.FK_Equipo_Proyecto_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Equipo_Proyecto" EntitySet="Equipo_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Empleado" Association="Self.FK_Tarea_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Log_Tarea" Association="Self.FK_Tarea_Log_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Tarea_Log" EntitySet="Tarea_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Mensaje_Tarea" Association="Self.FK_Tarea_Mensaje_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Tarea_Mensaje" EntitySet="Tarea_Mensaje" />
+          </AssociationSet>
+          <EntitySet Name="Departamento" EntityType="BarreraModel.Departamento" />
+          <AssociationSet Name="FK_Empleado_Departamento" Association="BarreraModel.FK_Empleado_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Empleado" Association="BarreraModel.FK_Empleado_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Empleado1" EntitySet="Empleado" />
+          </AssociationSet>
+          <EntitySet Name="Proyecto" EntityType="BarreraModel.Proyecto" />
+          <AssociationSet Name="FK_Equipo_Proyecto_Proyecto" Association="BarreraModel.FK_Equipo_Proyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Equipo_Proyecto" EntitySet="Equipo_Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Proyecto" Association="BarreraModel.FK_Tarea_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Empleado" Association="BarreraModel.FK_Proyecto_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Empleado1" Association="BarreraModel.FK_Proyecto_Empleado1">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+          </Key>
+          <Property Name="CODIGO_DEPARTAMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Empleado" Relationship="BarreraModel.FK_Empleado_Departamento" FromRole="Departamento" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_Empleado_Departamento">
+          <End Type="BarreraModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="BarreraModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="CODIGO_DEPARTAMENTO" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Empleado">
+          <End Type="BarreraModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="BarreraModel.Empleado" Role="Empleado1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Empleado1">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="Codigo_Proyecto" />
+          </Key>
+          <Property Name="Codigo_Proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Financiero" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Medicion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Peso" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <Property Name="Codigo_Empleado_Creador" Type="Int32" />
+          <Property Name="Codigo_Empleado_Lider" Type="Int32" />
+          <NavigationProperty Name="Equipo_Proyecto" Relationship="BarreraModel.FK_Equipo_Proyecto_Proyecto" FromRole="Proyecto" ToRole="Equipo_Proyecto" />
+          <NavigationProperty Name="Tarea" Relationship="BarreraModel.FK_Tarea_Proyecto" FromRole="Proyecto" ToRole="Tarea" />
+          <NavigationProperty Name="Empleado" Relationship="BarreraModel.FK_Proyecto_Empleado" FromRole="Proyecto" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado1" Relationship="BarreraModel.FK_Proyecto_Empleado1" FromRole="Proyecto" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_Equipo_Proyecto_Proyecto">
+          <End Type="BarreraModel.Proyecto" Role="Proyecto" Multiplicity="0..1" />
+          <End Type="BarreraModel.Equipo_Proyecto" Role="Equipo_Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Principal>
+            <Dependent Role="Equipo_Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Proyecto">
+          <End Type="BarreraModel.Proyecto" Role="Proyecto" Multiplicity="0..1" />
+          <End Type="BarreraModel.Tarea" Role="Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="Codigo_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Empleado">
+          <End Type="BarreraModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="BarreraModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="Codigo_Empleado_Creador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Empleado1">
+          <End Type="BarreraModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="BarreraModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="Codigo_Empleado_Lider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BarreraModelStoreContainer" CdmEntityContainer="BarreraEntities">
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="BarreraModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
+                <ScalarProperty Name="Codigo_Empresa" ColumnName="Codigo_Empresa" />
+                <ScalarProperty Name="Codigo_Puesto" ColumnName="Codigo_Puesto" />
+                <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+                <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+                <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+                <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Codigo_Empleado_Externo" ColumnName="Codigo_Empleado_Externo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="BarreraModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Codigo_Empresa" ColumnName="Codigo_Empresa" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo_Empresa_Externo" ColumnName="Codigo_Empresa_Externo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipo_Proyecto">
+            <EntityTypeMapping TypeName="BarreraModel.Equipo_Proyecto">
+              <MappingFragment StoreEntitySet="Equipo_Proyecto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo_Puesto" ColumnName="Codigo_Puesto" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Codigo_Proyecto" ColumnName="Codigo_Proyecto" />
+                <ScalarProperty Name="Designacion" ColumnName="Designacion" />
+                <ScalarProperty Name="Codigo_Empresa" ColumnName="Codigo_Empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organigrama_Proyecto">
+            <EntityTypeMapping TypeName="BarreraModel.Organigrama_Proyecto">
+              <MappingFragment StoreEntitySet="Organigrama_Proyecto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Padre" ColumnName="Padre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Codigo_Proyecto" ColumnName="Codigo_Proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puesto">
+            <EntityTypeMapping TypeName="BarreraModel.Puesto">
+              <MappingFragment StoreEntitySet="Puesto">
+                <ScalarProperty Name="Codigo_Puesto" ColumnName="Codigo_Puesto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Codigo_Puesto_Externo" ColumnName="Codigo_Puesto_Externo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BarreraModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarea">
+            <EntityTypeMapping TypeName="BarreraModel.Tarea">
+              <MappingFragment StoreEntitySet="Tarea">
+                <ScalarProperty Name="Codigo_Tarea" ColumnName="Codigo_Tarea" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Codigo_Proyecto" ColumnName="Codigo_Proyecto" />
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Padre" ColumnName="Padre" />
+                <ScalarProperty Name="Codigo_Empleado_Asignado" ColumnName="Codigo_Empleado_Asignado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarea_Log">
+            <EntityTypeMapping TypeName="BarreraModel.Tarea_Log">
+              <MappingFragment StoreEntitySet="Tarea_Log">
+                <ScalarProperty Name="Codigo_Tarea_Log" ColumnName="Codigo_Tarea_Log" />
+                <ScalarProperty Name="Codigo_Tarea" ColumnName="Codigo_Tarea" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarea_Mensaje">
+            <EntityTypeMapping TypeName="BarreraModel.Tarea_Mensaje">
+              <MappingFragment StoreEntitySet="Tarea_Mensaje">
+                <ScalarProperty Name="Codigo_Tarea_Mensaje" ColumnName="Codigo_Tarea_Mensaje" />
+                <ScalarProperty Name="Codigo_Tarea" ColumnName="Codigo_Tarea" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Reaccion" ColumnName="Reaccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="BarreraModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CODIGO_DEPARTAMENTO" ColumnName="CODIGO_DEPARTAMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyecto">
+            <EntityTypeMapping TypeName="BarreraModel.Proyecto">
+              <MappingFragment StoreEntitySet="Proyecto">
+                <ScalarProperty Name="Codigo_Empleado_Lider" ColumnName="Codigo_Empleado_Lider" />
+                <ScalarProperty Name="Codigo_Empleado_Creador" ColumnName="Codigo_Empleado_Creador" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Medicion" ColumnName="Medicion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Financiero" ColumnName="Financiero" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo_Proyecto" ColumnName="Codigo_Proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

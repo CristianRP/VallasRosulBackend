@@ -1,0 +1,76 @@
+﻿@*@model EFCCDataService.Models.EFCC_User*@
+
+@{
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/logincss")
+@Scripts.Render("~/bundles/loginjs")
+
+<div class="container">
+
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+        <div class="row">
+            <div class="iconmelon">
+                <svg viewBox="0 0 173 164">
+                    <g filter="">
+                        <use xlink:href="#frutal"></use>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title text-center">El Frutal Complejo Comercial</div>
+            </div>
+
+            <div class="panel-body">
+
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="user" type="text" class="form-control" name="username" value="" placeholder="Usuario">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="password" class="form-control" name="pass" placeholder="Contraseña">
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button href="~/VisitasPublicidad/VisitasPublicidad" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Iniciar Sesión</button>
+                             @*  <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Iniciar Sesión</button>*@
+                           @* <a href="~/VisitasPublicidad/VisitasPublicidad"><i class="fa fa-circle-o"></i> Registro de Visitas </a>*@
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="particles"></div>
+
+<svg id="svg-source" height="0" style="position: absolute; margin-left: -100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="frutal">
+        <path fill="#ffffff" d="M 0.00 0.00 L 173.00 0.00 L 173.00 164.00 L 0.00 164.00 L 0.00 0.00 Z" />
+        <path fill="#ffa409" d="M 63.88 11.86 C 78.27 0.73 100.90 2.16 113.35 15.61 C 121.53 23.59 125.17 35.32 124.08 46.58 C 107.74 48.63 93.73 62.63 92.11 79.09 L 92.04 79.36 C 89.21 79.56 86.37 79.64 83.54 79.67 C 83.52 79.56 83.50 79.34 83.49 79.24 C 82.30 61.87 66.42 47.18 49.14 46.33 C 47.40 33.29 53.35 19.66 63.88 11.86 Z" />
+        <path fill="#b51005" d="M 49.14 46.33 C 66.42 47.18 82.30 61.87 83.49 79.24 C 78.86 79.94 74.19 77.91 70.00 76.07 C 58.41 70.68 50.60 59.07 48.71 46.58 L 49.14 46.33 Z" />
+        <path fill="#b51983" d="M 31.63 49.48 C 37.00 47.12 42.83 46.20 48.71 46.58 C 50.60 59.07 58.41 70.68 70.00 76.07 C 74.19 77.91 78.86 79.94 83.49 79.24 C 83.50 79.34 83.52 79.56 83.54 79.67 C 83.59 81.16 83.81 82.62 84.21 84.07 C 74.12 84.37 64.46 89.36 57.91 96.96 C 51.94 103.52 48.97 112.35 48.61 121.13 C 37.05 122.79 25.17 117.21 17.60 108.46 C 10.48 99.75 6.92 88.00 9.38 76.89 C 11.59 64.97 20.13 53.98 31.63 49.48 Z" />
+        <path fill="#948a00" d="M 92.11 79.09 C 93.73 62.63 107.74 48.63 124.08 46.58 C 122.47 62.91 108.63 77.66 92.11 79.09 Z" />
+        <path fill="#94d60a" d="M 124.08 46.58 C 130.53 46.31 137.09 46.43 143.07 49.05 C 155.51 53.37 164.61 65.26 166.61 78.00 C 168.98 90.79 163.68 104.38 153.84 112.81 C 145.70 119.82 134.83 122.40 124.30 121.40 C 124.80 103.36 109.79 86.03 91.79 84.55 L 91.79 84.55 C 91.83 82.82 91.91 81.09 92.04 79.36 L 92.11 79.09 C 108.63 77.66 122.47 62.91 124.08 46.58 Z" />
+        <path fill="#ffffff" d="M 83.54 79.67 C 86.37 79.64 89.21 79.56 92.04 79.36 C 91.91 81.09 91.83 82.82 91.79 84.55 C 89.30 83.89 86.74 84.15 84.21 84.07 C 83.81 82.62 83.59 81.16 83.54 79.67 Z" />
+        <path fill="#001158" d="M 57.91 96.96 C 64.46 89.36 74.12 84.37 84.21 84.07 C 84.00 91.36 82.00 98.74 77.90 104.86 C 71.55 114.58 60.46 121.34 48.79 121.74 L 48.61 121.13 C 48.97 112.35 51.94 103.52 57.91 96.96 Z" />
+        <path fill="#00afab" d="M 84.21 84.07 C 86.74 84.15 89.30 83.89 91.79 84.55 L 91.79 84.55 C 91.33 102.60 106.32 119.73 124.30 121.40 C 124.66 138.73 111.55 155.29 94.47 158.57 C 83.12 161.02 70.48 158.11 61.84 150.15 C 53.50 143.25 48.88 132.50 48.79 121.74 C 60.46 121.34 71.55 114.58 77.90 104.86 C 82.00 98.74 84.00 91.36 84.21 84.07 Z" />
+        <path fill="#009307" d="M 91.79 84.55 C 109.79 86.03 124.80 103.36 124.30 121.40 C 106.32 119.73 91.33 102.60 91.79 84.55 Z" />
+    </g>
+</svg>

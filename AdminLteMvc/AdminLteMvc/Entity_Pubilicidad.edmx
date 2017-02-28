@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Publicidad_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BitacoraPushMovil3">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="codbus" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="dir" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoPublicidad" Type="int" Nullable="false" />
+          <Property Name="DescripcionPublicidad" Type="nvarchar" MaxLength="250" />
+          <Property Name="Medidas" Type="nvarchar" MaxLength="33" Nullable="false" />
+          <Property Name="Contrato" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFIn" Type="date" />
+          <Property Name="CodigoContrato" Type="int" Nullable="false" />
+          <Property Name="Latitud" Type="nvarchar" MaxLength="350" />
+          <Property Name="Longitud" Type="nvarchar" MaxLength="350" />
+          <Property Name="Imagen" Type="image" />
+          <Property Name="CalendarioPeriodo" Type="nvarchar" MaxLength="150" />
+          <Property Name="FechaEjecucion" Type="date" />
+          <Property Name="Semana" Type="int" />
+          <Property Name="Mes" Type="int" />
+          <Property Name="dia" Type="int" />
+          <Property Name="codigoZona" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="CodigoContrato" />
+          </Key>
+          <Property Name="CodigoContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFIn" Type="date" />
+          <Property Name="CodigoProveedor" Type="int" />
+          <Property Name="CodigoProyecto" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Precio" Type="numeric" Precision="19" Scale="2" />
+        </EntityType>
+        <EntityType Name="ContratoPago">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Contrato" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Monto" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="Pagado" Type="nvarchar" MaxLength="4" />
+          <Property Name="NoFactura" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="CodigoImagen" />
+          </Key>
+          <Property Name="CodigoImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imagen" Type="image" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="Codigo_Visita" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Problema_Visita">
+          <Key>
+            <PropertyRef Name="CodigoProblema" />
+          </Key>
+          <Property Name="CodigoProblema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="250" />
+          <Property Name="Telefono1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono2" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="CodigoExterno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Proyectos_Ubicaciones">
+          <Key>
+            <PropertyRef Name="CodigoProyecto" />
+          </Key>
+          <Property Name="CodigoProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoExterno" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Publicidad">
+          <Key>
+            <PropertyRef Name="CodigoPublicidad" />
+          </Key>
+          <Property Name="CodigoPublicidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Latitud" Type="nvarchar" MaxLength="350" />
+          <Property Name="Longitud" Type="nvarchar" MaxLength="350" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoProyecto" Type="int" />
+          <Property Name="CodigoContrato" Type="int" />
+          <Property Name="Alto" Type="nchar" MaxLength="10" />
+          <Property Name="Ancho" Type="nchar" MaxLength="10" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaCambioImagen" Type="date" />
+          <Property Name="imagen" Type="image" />
+          <Property Name="Demo" Type="nchar" MaxLength="10" />
+          <Property Name="CodigoZona" Type="int" />
+          <Property Name="CodigoBusqueda" Type="nvarchar" MaxLength="250" />
+          <Property Name="Calendario_Periodo" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreUsuario" Type="varchar(max)" Nullable="false" />
+          <Property Name="userPassword" Type="varchar(max)" Nullable="false" />
+          <Property Name="idDispositivo" Type="varchar(max)" Nullable="false" />
+          <Property Name="primerNombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="segundoNombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="primerApellido" Type="varchar(max)" Nullable="false" />
+          <Property Name="segundoApellido" Type="varchar(max)" Nullable="false" />
+          <Property Name="CodigoExterno" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Visita">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Publicidad" Type="int" />
+          <Property Name="Codigo_Problema" Type="int" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="codSupervisor" Type="int" />
+          <Property Name="Codigo_Proyecto" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="imagen" Type="image" />
+          <Property Name="Codigo_Visita" Type="int" />
+        </EntityType>
+        <EntityType Name="ZonaGeografica">
+          <Key>
+            <PropertyRef Name="CodigoZona" />
+          </Key>
+          <Property Name="CodigoZona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ContratoPago_Contrato">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="0..1" />
+          <End Role="ContratoPago" Type="Self.ContratoPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodigoContrato" />
+            </Principal>
+            <Dependent Role="ContratoPago">
+              <PropertyRef Name="Codigo_Contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodigoProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+          <End Role="Proyectos_Ubicaciones" Type="Self.Proyectos_Ubicaciones" Multiplicity="0..1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos_Ubicaciones">
+              <PropertyRef Name="CodigoProyecto" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Imagen_dbo_Visita_Codigo_Visita">
+          <End Role="Visita" Type="Self.Visita" Multiplicity="0..1" />
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visita">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Imagen">
+              <PropertyRef Name="Codigo_Visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+          <End Role="Proyectos_Ubicaciones" Type="Self.Proyectos_Ubicaciones" Multiplicity="0..1" />
+          <End Role="Publicidad" Type="Self.Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos_Ubicaciones">
+              <PropertyRef Name="CodigoProyecto" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad">
+          <End Role="Publicidad" Type="Self.Publicidad" Multiplicity="0..1" />
+          <End Role="Visita" Type="Self.Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicidad">
+              <PropertyRef Name="CodigoPublicidad" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="Codigo_Publicidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Visita_dbo_Supervisor_codSupervisor">
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+          <End Role="Visita" Type="Self.Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="codSupervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publicidad_Contrato">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="0..1" />
+          <End Role="Publicidad" Type="Self.Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodigoContrato" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publicidad_ZonaGeografica">
+          <End Role="ZonaGeografica" Type="Self.ZonaGeografica" Multiplicity="0..1" />
+          <End Role="Publicidad" Type="Self.Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZonaGeografica">
+              <PropertyRef Name="CodigoZona" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visita_Problema_Visita">
+          <End Role="Problema_Visita" Type="Self.Problema_Visita" Multiplicity="0..1" />
+          <End Role="Visita" Type="Self.Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problema_Visita">
+              <PropertyRef Name="CodigoProblema" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="Codigo_Problema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="VISTA_PRESUPUESTO_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Publicidad_ModelStoreContainer">
+          <EntitySet Name="BitacoraPushMovil3" EntityType="Self.BitacoraPushMovil3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContratoPago" EntityType="Self.ContratoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problema_Visita" EntityType="Self.Problema_Visita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyectos_Ubicaciones" EntityType="Self.Proyectos_Ubicaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicidad" EntityType="Self.Publicidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visita" EntityType="Self.Visita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZonaGeografica" EntityType="Self.ZonaGeografica" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ContratoPago_Contrato" Association="Self.FK_ContratoPago_Contrato">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="ContratoPago" EntitySet="ContratoPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor" Association="Self.FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto" Association="Self.FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+            <End Role="Proyectos_Ubicaciones" EntitySet="Proyectos_Ubicaciones" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Imagen_dbo_Visita_Codigo_Visita" Association="Self.FK_dbo_Imagen_dbo_Visita_Codigo_Visita">
+            <End Role="Visita" EntitySet="Visita" />
+            <End Role="Imagen" EntitySet="Imagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto" Association="Self.FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+            <End Role="Proyectos_Ubicaciones" EntitySet="Proyectos_Ubicaciones" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad" Association="Self.FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad">
+            <End Role="Publicidad" EntitySet="Publicidad" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Visita_dbo_Supervisor_codSupervisor" Association="Self.FK_dbo_Visita_dbo_Supervisor_codSupervisor">
+            <End Role="Supervisor" EntitySet="Supervisor" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publicidad_Contrato" Association="Self.FK_Publicidad_Contrato">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publicidad_ZonaGeografica" Association="Self.FK_Publicidad_ZonaGeografica">
+            <End Role="ZonaGeografica" EntitySet="ZonaGeografica" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visita_Problema_Visita" Association="Self.FK_Visita_Problema_Visita">
+            <End Role="Problema_Visita" EntitySet="Problema_Visita" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Publicidad_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PublicidadEntities_" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contrato" EntityType="Publicidad_Model.Contrato" />
+          <EntitySet Name="Imagen" EntityType="Publicidad_Model.Imagen" />
+          <EntitySet Name="Problema_Visita" EntityType="Publicidad_Model.Problema_Visita" />
+          <EntitySet Name="Proveedores" EntityType="Publicidad_Model.Proveedores" />
+          <EntitySet Name="Proyectos_Ubicaciones" EntityType="Publicidad_Model.Proyectos_Ubicaciones" />
+          <EntitySet Name="Supervisor" EntityType="Publicidad_Model.Supervisor" />
+          <AssociationSet Name="FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor" Association="Publicidad_Model.FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto" Association="Publicidad_Model.FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+            <End Role="Proyectos_Ubicaciones" EntitySet="Proyectos_Ubicaciones" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <EntitySet Name="ContratoPago" EntityType="Publicidad_Model.ContratoPago" />
+          <AssociationSet Name="FK_ContratoPago_Contrato" Association="Publicidad_Model.FK_ContratoPago_Contrato">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="ContratoPago" EntitySet="ContratoPago" />
+          </AssociationSet>
+          <FunctionImport Name="VISTA_PRESUPUESTO_CONTRATO" ReturnType="Collection(Publicidad_Model.VISTA_PRESUPUESTO_CONTRATO_Result)" />
+          <EntitySet Name="Visita" EntityType="Publicidad_Model.Visita" />
+          <AssociationSet Name="FK_dbo_Imagen_dbo_Visita_Codigo_Visita" Association="Publicidad_Model.FK_dbo_Imagen_dbo_Visita_Codigo_Visita">
+            <End Role="Visita" EntitySet="Visita" />
+            <End Role="Imagen" EntitySet="Imagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visita_Problema_Visita" Association="Publicidad_Model.FK_Visita_Problema_Visita">
+            <End Role="Problema_Visita" EntitySet="Problema_Visita" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Visita_dbo_Supervisor_codSupervisor" Association="Publicidad_Model.FK_dbo_Visita_dbo_Supervisor_codSupervisor">
+            <End Role="Supervisor" EntitySet="Supervisor" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <EntitySet Name="ZonaGeografica" EntityType="Publicidad_Model.ZonaGeografica" />
+          <EntitySet Name="BitacoraPushMovil3" EntityType="Publicidad_Model.BitacoraPushMovil3" />
+          <EntitySet Name="Publicidad" EntityType="Publicidad_Model.Publicidad" />
+          <AssociationSet Name="FK_Publicidad_Contrato" Association="Publicidad_Model.FK_Publicidad_Contrato">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto" Association="Publicidad_Model.FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+            <End Role="Proyectos_Ubicaciones" EntitySet="Proyectos_Ubicaciones" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad" Association="Publicidad_Model.FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad">
+            <End Role="Publicidad" EntitySet="Publicidad" />
+            <End Role="Visita" EntitySet="Visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publicidad_ZonaGeografica" Association="Publicidad_Model.FK_Publicidad_ZonaGeografica">
+            <End Role="ZonaGeografica" EntitySet="ZonaGeografica" />
+            <End Role="Publicidad" EntitySet="Publicidad" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="CodigoContrato" />
+          </Key>
+          <Property Name="CodigoContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFIn" Type="DateTime" Precision="0" />
+          <Property Name="CodigoProveedor" Type="Int32" />
+          <Property Name="CodigoProyecto" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proveedores" Relationship="Publicidad_Model.FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor" FromRole="Contrato" ToRole="Proveedores" />
+          <NavigationProperty Name="Proyectos_Ubicaciones" Relationship="Publicidad_Model.FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto" FromRole="Contrato" ToRole="Proyectos_Ubicaciones" />
+          <NavigationProperty Name="ContratoPago" Relationship="Publicidad_Model.FK_ContratoPago_Contrato" FromRole="Contrato" ToRole="ContratoPago" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="2" />
+          <NavigationProperty Name="Publicidad" Relationship="Publicidad_Model.FK_Publicidad_Contrato" FromRole="Contrato" ToRole="Publicidad" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="CodigoImagen" />
+          </Key>
+          <Property Name="CodigoImagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imagen1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="Codigo_Visita" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Visita" Relationship="Publicidad_Model.FK_dbo_Imagen_dbo_Visita_Codigo_Visita" FromRole="Imagen" ToRole="Visita" />
+        </EntityType>
+        <EntityType Name="Problema_Visita">
+          <Key>
+            <PropertyRef Name="CodigoProblema" />
+          </Key>
+          <Property Name="CodigoProblema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Visita" Relationship="Publicidad_Model.FK_Visita_Problema_Visita" FromRole="Problema_Visita" ToRole="Visita" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoExterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrato" Relationship="Publicidad_Model.FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor" FromRole="Proveedores" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="Proyectos_Ubicaciones">
+          <Key>
+            <PropertyRef Name="CodigoProyecto" />
+          </Key>
+          <Property Name="CodigoProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoExterno" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrato" Relationship="Publicidad_Model.FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto" FromRole="Proyectos_Ubicaciones" ToRole="Contrato" />
+          <NavigationProperty Name="Publicidad" Relationship="Publicidad_Model.FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto" FromRole="Proyectos_Ubicaciones" ToRole="Publicidad" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="userPassword" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idDispositivo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="primerNombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="segundoNombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="primerApellido" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="segundoApellido" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoExterno" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Visita" Relationship="Publicidad_Model.FK_dbo_Visita_dbo_Supervisor_codSupervisor" FromRole="Supervisor" ToRole="Visita" />
+        </EntityType>
+        <Association Name="FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor">
+          <End Type="Publicidad_Model.Proveedores" Role="Proveedores" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodigoProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+          <End Type="Publicidad_Model.Proyectos_Ubicaciones" Role="Proyectos_Ubicaciones" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos_Ubicaciones">
+              <PropertyRef Name="CodigoProyecto" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContratoPago">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Contrato" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="Pagado" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="NoFactura" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrato" Relationship="Publicidad_Model.FK_ContratoPago_Contrato" FromRole="ContratoPago" ToRole="Contrato" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ContratoPago_Contrato">
+          <End Type="Publicidad_Model.Contrato" Role="Contrato" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.ContratoPago" Role="ContratoPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodigoContrato" />
+            </Principal>
+            <Dependent Role="ContratoPago">
+              <PropertyRef Name="Codigo_Contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="VISTA_PRESUPUESTO_CONTRATO_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="C1" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C2" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C3" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C4" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C5" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C6" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C7" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C8" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C9" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C10" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C11" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="C12" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityType Name="Visita">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Publicidad" Type="Int32" />
+          <Property Name="Codigo_Problema" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="codSupervisor" Type="Int32" />
+          <Property Name="Codigo_Proyecto" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Codigo_Visita" Type="Int32" />
+          <NavigationProperty Name="Imagen1" Relationship="Publicidad_Model.FK_dbo_Imagen_dbo_Visita_Codigo_Visita" FromRole="Visita" ToRole="Imagen" />
+          <NavigationProperty Name="Problema_Visita" Relationship="Publicidad_Model.FK_Visita_Problema_Visita" FromRole="Visita" ToRole="Problema_Visita" />
+          <NavigationProperty Name="Supervisor" Relationship="Publicidad_Model.FK_dbo_Visita_dbo_Supervisor_codSupervisor" FromRole="Visita" ToRole="Supervisor" />
+          <NavigationProperty Name="Publicidad" Relationship="Publicidad_Model.FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad" FromRole="Visita" ToRole="Publicidad" />
+        </EntityType>
+        <Association Name="FK_dbo_Imagen_dbo_Visita_Codigo_Visita">
+          <End Type="Publicidad_Model.Visita" Role="Visita" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Imagen" Role="Imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visita">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Imagen">
+              <PropertyRef Name="Codigo_Visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visita_Problema_Visita">
+          <End Type="Publicidad_Model.Problema_Visita" Role="Problema_Visita" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Visita" Role="Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problema_Visita">
+              <PropertyRef Name="CodigoProblema" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="Codigo_Problema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Visita_dbo_Supervisor_codSupervisor">
+          <End Type="Publicidad_Model.Supervisor" Role="Supervisor" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Visita" Role="Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="codSupervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ZonaGeografica">
+          <Key>
+            <PropertyRef Name="CodigoZona" />
+          </Key>
+          <Property Name="CodigoZona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Publicidad" Relationship="Publicidad_Model.FK_Publicidad_ZonaGeografica" FromRole="ZonaGeografica" ToRole="Publicidad" />
+        </EntityType>
+        <EntityType Name="BitacoraPushMovil3">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="codbus" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="dir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoPublicidad" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionPublicidad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Medidas" Type="String" Nullable="false" MaxLength="33" FixedLength="false" Unicode="true" />
+          <Property Name="Contrato" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFIn" Type="DateTime" Precision="0" />
+          <Property Name="CodigoContrato" Type="Int32" Nullable="false" />
+          <Property Name="Latitud" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Longitud" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CalendarioPeriodo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEjecucion" Type="DateTime" Precision="0" />
+          <Property Name="Semana" Type="Int32" />
+          <Property Name="Mes" Type="Int32" />
+          <Property Name="dia" Type="Int32" />
+          <Property Name="codigoZona" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Publicidad">
+          <Key>
+            <PropertyRef Name="CodigoPublicidad" />
+          </Key>
+          <Property Name="CodigoPublicidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Longitud" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoProyecto" Type="Int32" />
+          <Property Name="CodigoContrato" Type="Int32" />
+          <Property Name="Alto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ancho" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCambioImagen" Type="DateTime" Precision="0" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Demo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CodigoZona" Type="Int32" />
+          <Property Name="CodigoBusqueda" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Calendario_Periodo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrato" Relationship="Publicidad_Model.FK_Publicidad_Contrato" FromRole="Publicidad" ToRole="Contrato" />
+          <NavigationProperty Name="Proyectos_Ubicaciones" Relationship="Publicidad_Model.FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto" FromRole="Publicidad" ToRole="Proyectos_Ubicaciones" />
+          <NavigationProperty Name="Visita" Relationship="Publicidad_Model.FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad" FromRole="Publicidad" ToRole="Visita" />
+          <NavigationProperty Name="ZonaGeografica" Relationship="Publicidad_Model.FK_Publicidad_ZonaGeografica" FromRole="Publicidad" ToRole="ZonaGeografica" />
+        </EntityType>
+        <Association Name="FK_Publicidad_Contrato">
+          <End Type="Publicidad_Model.Contrato" Role="Contrato" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Publicidad" Role="Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodigoContrato" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto">
+          <End Type="Publicidad_Model.Proyectos_Ubicaciones" Role="Proyectos_Ubicaciones" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Publicidad" Role="Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos_Ubicaciones">
+              <PropertyRef Name="CodigoProyecto" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad">
+          <End Type="Publicidad_Model.Publicidad" Role="Publicidad" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Visita" Role="Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicidad">
+              <PropertyRef Name="CodigoPublicidad" />
+            </Principal>
+            <Dependent Role="Visita">
+              <PropertyRef Name="Codigo_Publicidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publicidad_ZonaGeografica">
+          <End Type="Publicidad_Model.ZonaGeografica" Role="ZonaGeografica" Multiplicity="0..1" />
+          <End Type="Publicidad_Model.Publicidad" Role="Publicidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZonaGeografica">
+              <PropertyRef Name="CodigoZona" />
+            </Principal>
+            <Dependent Role="Publicidad">
+              <PropertyRef Name="CodigoZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Publicidad_ModelStoreContainer" CdmEntityContainer="PublicidadEntities_">
+          <EntitySetMapping Name="Contrato">
+            <EntityTypeMapping TypeName="Publicidad_Model.Contrato">
+              <MappingFragment StoreEntitySet="Contrato">
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+                <ScalarProperty Name="CodigoProveedor" ColumnName="CodigoProveedor" />
+                <ScalarProperty Name="FechaFIn" ColumnName="FechaFIn" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoContrato" ColumnName="CodigoContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imagen">
+            <EntityTypeMapping TypeName="Publicidad_Model.Imagen">
+              <MappingFragment StoreEntitySet="Imagen">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Codigo_Visita" ColumnName="Codigo_Visita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="Imagen1" ColumnName="Imagen" />
+                <ScalarProperty Name="CodigoImagen" ColumnName="CodigoImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problema_Visita">
+            <EntityTypeMapping TypeName="Publicidad_Model.Problema_Visita">
+              <MappingFragment StoreEntitySet="Problema_Visita">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoProblema" ColumnName="CodigoProblema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="Publicidad_Model.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodigoExterno" ColumnName="CodigoExterno" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyectos_Ubicaciones">
+            <EntityTypeMapping TypeName="Publicidad_Model.Proyectos_Ubicaciones">
+              <MappingFragment StoreEntitySet="Proyectos_Ubicaciones">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoExterno" ColumnName="CodigoExterno" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supervisor">
+            <EntityTypeMapping TypeName="Publicidad_Model.Supervisor">
+              <MappingFragment StoreEntitySet="Supervisor">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodigoExterno" ColumnName="CodigoExterno" />
+                <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+                <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+                <ScalarProperty Name="segundoNombre" ColumnName="segundoNombre" />
+                <ScalarProperty Name="primerNombre" ColumnName="primerNombre" />
+                <ScalarProperty Name="idDispositivo" ColumnName="idDispositivo" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratoPago">
+            <EntityTypeMapping TypeName="Publicidad_Model.ContratoPago">
+              <MappingFragment StoreEntitySet="ContratoPago">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Codigo_Contrato" ColumnName="Codigo_Contrato" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="VISTA_PRESUPUESTO_CONTRATO" FunctionName="Publicidad_Model.Store.VISTA_PRESUPUESTO_CONTRATO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Publicidad_Model.VISTA_PRESUPUESTO_CONTRATO_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="C1" ColumnName="1" />
+                <ScalarProperty Name="C2" ColumnName="2" />
+                <ScalarProperty Name="C3" ColumnName="3" />
+                <ScalarProperty Name="C4" ColumnName="4" />
+                <ScalarProperty Name="C5" ColumnName="5" />
+                <ScalarProperty Name="C6" ColumnName="6" />
+                <ScalarProperty Name="C7" ColumnName="7" />
+                <ScalarProperty Name="C8" ColumnName="8" />
+                <ScalarProperty Name="C9" ColumnName="9" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Visita">
+            <EntityTypeMapping TypeName="Publicidad_Model.Visita">
+              <MappingFragment StoreEntitySet="Visita">
+                <ScalarProperty Name="Codigo_Visita" ColumnName="Codigo_Visita" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Codigo_Proyecto" ColumnName="Codigo_Proyecto" />
+                <ScalarProperty Name="codSupervisor" ColumnName="codSupervisor" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Codigo_Problema" ColumnName="Codigo_Problema" />
+                <ScalarProperty Name="Codigo_Publicidad" ColumnName="Codigo_Publicidad" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZonaGeografica">
+            <EntityTypeMapping TypeName="Publicidad_Model.ZonaGeografica">
+              <MappingFragment StoreEntitySet="ZonaGeografica">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoZona" ColumnName="CodigoZona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraPushMovil3">
+            <EntityTypeMapping TypeName="Publicidad_Model.BitacoraPushMovil3">
+              <MappingFragment StoreEntitySet="BitacoraPushMovil3">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoZona" ColumnName="codigoZona" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Semana" ColumnName="Semana" />
+                <ScalarProperty Name="FechaEjecucion" ColumnName="FechaEjecucion" />
+                <ScalarProperty Name="CalendarioPeriodo" ColumnName="CalendarioPeriodo" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="CodigoContrato" ColumnName="CodigoContrato" />
+                <ScalarProperty Name="FechaFIn" ColumnName="FechaFIn" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Contrato" ColumnName="Contrato" />
+                <ScalarProperty Name="Medidas" ColumnName="Medidas" />
+                <ScalarProperty Name="DescripcionPublicidad" ColumnName="DescripcionPublicidad" />
+                <ScalarProperty Name="CodigoPublicidad" ColumnName="CodigoPublicidad" />
+                <ScalarProperty Name="dir" ColumnName="dir" />
+                <ScalarProperty Name="codbus" ColumnName="codbus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publicidad">
+            <EntityTypeMapping TypeName="Publicidad_Model.Publicidad">
+              <MappingFragment StoreEntitySet="Publicidad">
+                <ScalarProperty Name="Calendario_Periodo" ColumnName="Calendario_Periodo" />
+                <ScalarProperty Name="CodigoBusqueda" ColumnName="CodigoBusqueda" />
+                <ScalarProperty Name="CodigoZona" ColumnName="CodigoZona" />
+                <ScalarProperty Name="Demo" ColumnName="Demo" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="FechaCambioImagen" ColumnName="FechaCambioImagen" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ancho" ColumnName="Ancho" />
+                <ScalarProperty Name="Alto" ColumnName="Alto" />
+                <ScalarProperty Name="CodigoContrato" ColumnName="CodigoContrato" />
+                <ScalarProperty Name="CodigoProyecto" ColumnName="CodigoProyecto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoPublicidad" ColumnName="CodigoPublicidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

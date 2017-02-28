@@ -1,0 +1,476 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/ContratosVistaSP")
+
+<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+<meta charset="UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="~/Content/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/common-scripts.js"></script>
+<script src="~/Scripts/knockout-3.4.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script type="text/javascript" charset="utf8" src="~/plugins/datatables/jquery.dataTables.js"></script>
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+}
+@{
+    ViewBag.Title = "CONTRATOS";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+
+<script language="javascript">
+        function doSearch() {
+            var tableReg = document.getElementById('datos');
+            var searchText = document.getElementById('searchTerm').value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+            // Recorre todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++) {
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorre todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Busca el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
+</script>
+<!-- Info boxes -->
+ 
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- TABLE: LISTADO DE CONTRATOS -->
+            <div class="box box-info ">
+                <div class="box-header with-border">
+                    <div class="form-group form-group-label">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-8">
+                                <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                <INPUT placeholder="Buscar Contrato " type="text" id="searchTerm" onkeyup="doSearch()">
+                                <a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-tools pull-right">
+
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <form></form>
+                        <div class="form-panel tablaResultados">
+                            <table id="resultados" class="table table-bordered table-striped table-condensed cf display">
+
+                                <thead>
+                                    <tr>
+                                        @*<th>SEGUIMIENTO </th>*@
+                                        <th>VER DETALLE</th>
+                                        <th>AGREGAR PAGOS</th>
+
+
+                                        @* <th>Proyecto</th>*@
+                                        <th>CODIGO CONTRATO</th>
+                                        <th>DESCRIPCION CONTRATO</th>
+                                        <th>FECHA INICIO</th>
+                                        <th>FECHA FIN</th>
+                                        @*  <th>CODIGO PUBLICIDAD</th>*@
+                                        <th>CODIGO PROVEEDOR</th>
+                                        <th>NOMBRE PROVEEDOR</th>
+                                        <th>CODIGO PROYECTO</th>
+                                        <th>NOMBRE PROYECTO</th>
+                                        <th>NUMERO DE VALLAS</th>
+                                        <th>VENCIMIENTO</th>
+                                        <th>ESTADO</th>
+                                        @*<th>NoContrato</th>
+                                    <th>Proveedor</th>
+                                    <th>FechaInicio</th>
+                                    <th>FechaFIn</th>
+                                    <th>Latitud</th>
+                                    <th>Longitud</th>*@
+                                        @*  <th>Resultado</th>*@
+                                    </tr>
+                                </thead>
+
+                                <tbody data-bind="foreach: ContratosVistaSP">
+                                    <tr>
+                                        <td><small><a class="btn btn-success" href="#" data-bind="click: $parent.contratosPagos" data-target="#editarEvento">Pagos <span class="fa fa-credit-card" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>
+                                        <td><small><a class="btn btn-success" style="margin-left: 0%" data-toggle="modal" data-target="#agregarEvento" data-bind="click: $parent.setContratoCodigo">Nuevo <span class="glyphicon glyphicon-plus" style="margin-left: 0%" data-toggle="modal"></span></a> </small></td>
+                                        @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
+
+                                        <td data-bind="text: CodigoContrato"></td>
+                                        <td data-bind="text: Descripcion"></td>
+
+                                        <td data-bind="text: FechaInicio"></td>
+                                        <td data-bind="text: FechaFIn"></td>
+                                        <td data-bind="text: CodigoProveedor"></td>
+
+                                        <td data-bind="text: Nombre"></td>
+                                        <td data-bind="text: CodigoProyecto"></td>
+                                        <td data-bind="text: Descripcion1"></td>
+                                        <td data-bind="text: NumeroVallas"></td>
+                                        <td data-bind="text: Vencimiento"></td>
+                                        <td data-bind="text: Estado"></td>
+
+
+                                        @*<td><span data-bind="css: {'label-success' : Resultado == 'OK', 'label-danger' : Resultado == 'FAIL'  }" class="label"><span data-bind="text: Resultado"></span></span></td>*@
+
+                                        @*  <td> <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>*@
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box-body -->
+            
+                <div class="box-footer clearfix">
+                    @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>*@
+                    @* <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>*@
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.col -->
+<h3>DETALLE DE PAGOS</h3>
+     <div class="row" style="background-color:azure">
+        <div class="col-md-12">
+            <!-- TABLE: DETALLE DE PAGOS -->
+            <div class="box box-info " style="background-color:azure">
+                <div class="box-header with-border" style="background-color:azure">
+                    <div class="form-group form-group-label">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-8">
+                                @*<label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                    <INPUT placeholder="Buscar Contrato " type="text" id="searchTerm" onkeyup="doSearch()">*@
+
+                                @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-tools pull-right">
+
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table id="datos" class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>EDITAR</th>
+                                    <th>NO PAGO</th>
+                                    @*<th>SEGUIMIENTO </th>*@
+                                    <th>FECHA</th>
+                                    <th>MONTO</th>
+                                    @* <th>Proyecto</th>*@
+                                    <th>NO FACTURA</th>
+                                    <th>PAGADO</th>
+                                    <th>CONTRATO</th>
+                                    @*  <th>CODIGO PUBLICIDAD</th>*@
+
+
+                                    @*<th>NoContrato</th>
+                                        <th>Proveedor</th>
+                                        <th>FechaInicio</th>
+                                        <th>FechaFIn</th>
+                                        <th>Latitud</th>
+                                        <th>Longitud</th>*@
+                                    @*  <th>Resultado</th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody data-bind="foreach: ContratoPagos">
+                                <tr>
+                                    <td><small><a  class="btn btn-success" href="#" data-bind="click: $parent.selectEvent" data-toggle="modal" data-target="#editarEvento"><span class="fa-pencil-square-o"></span></a></small></td>
+                                    @*<td><small><a class="btn btn-success" href="#" data-bind="click: $parent.contratosPagos" data-target="#editarEvento">Pagos <span class="fa fa-credit-card" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>*@
+
+                                        <td data-bind="text: id"></td>
+                                    <td data-bind="text: Fecha"></td>
+                                    <td data-bind="text: Monto"></td>
+                                    <td data-bind="text: NoFactura"></td>
+                                    <td data-bind="text: Pagado"></td>
+
+                                    <td data-bind="text: Codigo_Contrato"></td>
+
+
+                                    @*<td><span data-bind="css: {'label-success' : Resultado == 'OK', 'label-danger' : Resultado == 'FAIL'  }" class="label"><span data-bind="text: Resultado"></span></span></td>*@
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+
+            </div>
+
+
+
+            <div class="box-footer clearfix">
+                @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>*@
+                @* <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>*@
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <!-- MODAL PARA AGREGAR EVENTOS-->
+    <div class="modal fade" id="agregarEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" data-bind="submit: addEvento">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Crear pago</h4>
+                    </div>
+
+
+                    <div class="modal-body">
+
+
+                        <div class="form-group">
+                            <label for="CodigoContrato" class="col-lg-2 control-label">Contrato</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="CodigoContrato" data-bind="value: contratoCodigo.CodigoContrato"
+                                       placeholder="contratoCodigo" required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="fecha" class="col-lg-2 control-label">Fecha Pago    </label>
+                            <div id="fecha" class="input-append date">
+                                <input placeholder="dd/MM/yyyy" id="fecha" data-bind="value: newEvento.Fecha" class="form-control" data-format="dd/MM/yyyy hh:mm:ss" type="text"  pattern="\d{1,2}/\d{1,2}/\d{4}">
+                               
+                                 <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  for="Monto" class="col-lg-2 control-label">Monto</label>
+                            <div class="col-lg-10">
+                                <input   pattern="\d+(\.\d{2})?" type="text" class="form-control" id="Monto" data-bind="value: newEvento.Monto "
+                                       placeholder="0.00" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Pagado" class="col-lg-2 control-label">¿Pago Efectuado?</label>
+                            <div class="col-lg-10">
+                                @*<input type="text" class="form-control" id="Pagado" value="NO"
+                                       *@
+                                 
+                                       <input type="text" class="form-control" id="Pagado" data-bind="value: newEvento.Pagado"
+                                
+                                              placeholder="SI/NO" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="NoFactura" class="col-lg-2 control-label">Referencia del pago</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="NoFactura" data-bind="value: newEvento.NoFactura"
+                                       placeholder="Referencia" >
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnSave" class="btn btn-success">Grabar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- MODAL PARA Editar EVENTOS CONTRATO-->
+    <div class="modal fade" id="EditarContrato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" data-bind="submit: updateEvent">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Editar Pago</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Contrato" class="col-lg-2 control-label">Contrato</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="Contrato"
+                                       placeholder="Contrato" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id" class="col-lg-2 control-label">ID</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="id" data-bind="value: selectedEvent.id"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Fecha" class="col-lg-2 control-label">Fecha Pago    </label>
+
+                            <div id="Fecha" class="input-append date">
+                                <textarea class="form-control" rows="1" id="Fecha" data-bind="value: selectedEvent.Fecha"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Monto" class="col-lg-2 control-label">Monto</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="monto" data-bind="value: selectedEvent.Monto"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="NoFactura" class="col-lg-2 control-label">Referencia</label>
+                            <div class="col-lg-10">
+
+
+                                <textarea class="form-control" rows="1" id="noFactura" data-bind="text: selectedEvent.noFactura"></textarea>
+                                <span class="help-block">
+                                </span>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Pagado" class="col-lg-2 control-label">Pagado</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="Pagado" data-bind="text: selectedEvent.Pagado"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- MODAL PARA Editar EVENTOS-->
+    <div class="modal fade" id="editarEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" data-bind="submit: updateEvent">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Editar Pago</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="Codigo_Contrato" class="col-lg-2 control-label">CONTRATO</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="Codigo_Contrato" data-bind="value: selectedEvent.Codigo_Contrato"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="id" class="col-lg-2 control-label">ID</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="id" data-bind="value: selectedEvent.id"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Fecha" class="col-lg-2 control-label">Fecha Pago    </label>
+
+                            <div id="Fecha" class="input-append date">
+                                <textarea class="form-control" rows="1" id="Fecha" data-bind="value: selectedEvent.Fecha"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Monto" class="col-lg-2 control-label">Monto</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="monto" data-bind="value: selectedEvent.Monto"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="NoFactura" class="col-lg-2 control-label">Referencia</label>
+                            <div class="col-lg-10">
+
+
+                                <textarea class="form-control" rows="1" id="nofactura" data-bind="text: selectedEvent.NoFactura"></textarea>
+                                <span class="help-block">
+                                </span>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Pagado" class="col-lg-2 control-label">Pagado</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="Pagado" data-bind="text: selectedEvent.Pagado"></textarea>
+                                <span class="help-block">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+

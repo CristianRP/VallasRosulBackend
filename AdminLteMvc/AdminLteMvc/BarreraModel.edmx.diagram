@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="427d3bc589c04eeaa0dcf04667c66069" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="BarreraModel.Empleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Empresa" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Equipo_Proyecto" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Organigrama_Proyecto" Width="1.5" PointX="2.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Puesto" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Tarea" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Tarea_Log" Width="1.5" PointX="6.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarreraModel.Tarea_Mensaje" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="BarreraModel.FK_Empleado_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="BarreraModel.FK_Empleado_Puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="BarreraModel.FK_Equipo_Proyecto_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="BarreraModel.FK_Tarea_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="BarreraModel.FK_Tarea_Log_Tarea" ManuallyRouted="false" />
+        <AssociationConnector Association="BarreraModel.FK_Tarea_Mensaje_Tarea" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BarreraModel.Departamento" Width="1.5" PointX="0.75" PointY="18.25" />
+        <AssociationConnector Association="BarreraModel.FK_Empleado_Departamento" />
+        <AssociationConnector Association="BarreraModel.FK_Empleado_Empleado" />
+        <EntityTypeShape EntityType="BarreraModel.Proyecto" Width="1.5" PointX="4.375" PointY="9.375" />
+        <AssociationConnector Association="BarreraModel.FK_Equipo_Proyecto_Proyecto" />
+        <AssociationConnector Association="BarreraModel.FK_Tarea_Proyecto" />
+        <AssociationConnector Association="BarreraModel.FK_Proyecto_Empleado" />
+        <AssociationConnector Association="BarreraModel.FK_Proyecto_Empleado1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

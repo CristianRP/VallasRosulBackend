@@ -1,0 +1,83 @@
+﻿@model AdminLteMvc.Supervisor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supervisor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idDispositivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idDispositivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primerNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primerNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segundoNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segundoNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primerApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primerApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segundoApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segundoApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoExterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoExterno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.idUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

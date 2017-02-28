@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3fa8a976d8640f3a4feeabee5cd7030" Name="Diagram_0" ZoomLevel="57">
+        <EntityTypeShape EntityType="Publicidad_Model.Contrato" Width="1.5" PointX="6" PointY="4.75" />
+        <EntityTypeShape EntityType="Publicidad_Model.Imagen" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="Publicidad_Model.Problema_Visita" Width="1.5" PointX="5.75" PointY="2.25" />
+        <EntityTypeShape EntityType="Publicidad_Model.Proveedores" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Publicidad_Model.Proyectos_Ubicaciones" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="Publicidad_Model.Supervisor" Width="1.5" PointX="2.75" PointY="9.25" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Contrato_dbo_Proveedores_CodigoProveedor" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Contrato_dbo_Proyectos_Ubicaciones_CodigoProyecto" />
+        <EntityTypeShape EntityType="Publicidad_Model.ContratoPago" Width="1.5" PointX="8.25" PointY="5" />
+        <AssociationConnector Association="Publicidad_Model.FK_ContratoPago_Contrato" />
+        <EntityTypeShape EntityType="Publicidad_Model.Visita" Width="1.5" PointX="13.5" PointY="5.5" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Imagen_dbo_Visita_Codigo_Visita" />
+        <AssociationConnector Association="Publicidad_Model.FK_Visita_Problema_Visita" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Visita_dbo_Supervisor_codSupervisor" />
+        <EntityTypeShape EntityType="Publicidad_Model.ZonaGeografica" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="Publicidad_Model.BitacoraPushMovil3" Width="3.75" PointX="8.375" PointY="10.5" />
+        <EntityTypeShape EntityType="Publicidad_Model.Publicidad" Width="3.75" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="Publicidad_Model.FK_Publicidad_Contrato" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Publicidad_dbo_Proyectos_Ubicaciones_CodigoProyecto" />
+        <AssociationConnector Association="Publicidad_Model.FK_dbo_Visita_dbo_Publicidad_Codigo_Publicidad" />
+        <AssociationConnector Association="Publicidad_Model.FK_Publicidad_ZonaGeografica" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

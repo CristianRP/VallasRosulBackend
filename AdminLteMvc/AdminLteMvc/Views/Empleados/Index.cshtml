@@ -1,0 +1,112 @@
+﻿@model IEnumerable<AdminLteMvc.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Primer_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segundo_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Primer_Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segundo_Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo_Empleado_Externo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puesto.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado2.Primer_Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Primer_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segundo_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Primer_Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segundo_Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo_Empleado_Externo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puesto.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado2.Primer_Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Empleado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Empleado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Empleado })
+        </td>
+    </tr>
+}
+
+</table>

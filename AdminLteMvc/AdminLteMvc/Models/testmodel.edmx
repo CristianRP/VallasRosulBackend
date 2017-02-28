@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Android_DataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Fletes_Vista_Fletes_Tarifas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="nvarchar" Mode="In" />
+          <Parameter Name="CodigoProyectoOrigen" Type="int" Mode="In" />
+          <Parameter Name="CodigoProyectoDestino" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Android_DataBaseModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Android_DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Android_DataBaseEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Fletes_Vista_Fletes_Tarifas" ReturnType="Collection(Android_DataBaseModel.Fletes_Vista_Fletes_Tarifas_Result)">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="CodigoProyectoOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="CodigoProyectoDestino" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Fletes_Vista_Fletes_Tarifas_Result">
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CodigoProyectoOrigen" Nullable="true" />
+          <Property Type="String" Name="Nombre_Ubicacion" Nullable="true" MaxLength="350" />
+          <Property Type="Int32" Name="CodigoProyectoDestino" Nullable="true" />
+          <Property Type="String" Name="Nombre_Ubicacion1" Nullable="true" MaxLength="350" />
+          <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="DISTANCIAkm" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Android_DataBaseModelStoreContainer" CdmEntityContainer="Android_DataBaseEntities" >
+          <FunctionImportMapping FunctionImportName="Fletes_Vista_Fletes_Tarifas" FunctionName="Android_DataBaseModel.Store.Fletes_Vista_Fletes_Tarifas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Android_DataBaseModel.Fletes_Vista_Fletes_Tarifas_Result">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="CodigoProyectoOrigen" ColumnName="CodigoProyectoOrigen" />
+                <ScalarProperty Name="Nombre_Ubicacion" ColumnName="Nombre_Ubicacion" />
+                <ScalarProperty Name="CodigoProyectoDestino" ColumnName="CodigoProyectoDestino" />
+                <ScalarProperty Name="Nombre_Ubicacion1" ColumnName="Nombre_Ubicacion1" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="DISTANCIAkm" ColumnName="DISTANCIAkm" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

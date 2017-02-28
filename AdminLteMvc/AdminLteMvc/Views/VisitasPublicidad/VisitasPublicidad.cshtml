@@ -1,0 +1,248 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/visitas")  
+ 
+<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+<meta charset="UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="~/Content/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/common-scripts.js"></script>
+
+<script src="~/Scripts/knockout-3.4.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script type="text/javascript" charset="utf8" src="~/plugins/datatables/jquery.dataTables.js"></script>
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+@{
+    ViewBag.Title = "CONTRATOS";
+    // <div class="fechahoy"> @DateTime.Now.ToString()  </div>
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    ViewBag.Breadcrumb = new Breadcrumb(new Crumb[] {
+        new Crumb("Dashboard", "", "fa-dashboard")
+    });
+}
+ 
+@*<div class="row" data-bind="foreach: Panel">
+
+  
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-battery-empty" aria-hidden="true"></i></span>
+            <div >
+            
+                <h12> <span> CONTRATOS <BR>  VENCIDOS</span></h12>
+                <h2> <span align="center" data-bind="text: TOTAL_CONTRATOS_VENCIDOS" style="color:blue"></span></h2>
+
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+      
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-battery-low"></i></span>
+            <div >
+               
+                <h12> <span>CONTRATOS <BR>  POR VENCER</span></h12>
+                <h2> <span align="center" data-bind="text: TOTAL_CONTRATOS_PORVENCER" style="color:blue"></span></h2>
+
+
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-battery-full"></i></span>
+            <div >
+            
+                <h12> <span>CONTRATOS <BR> ACTIVOS</span></h12>
+                <h2> <span align="center" data-bind="text: TOTAL_CONTRATOS_ACTIVOS" style="color:blue"></span></h2>
+
+             
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+ 
+</div><!-- /.row -->
+
+<h3>PUBLICIDAD</h3>
+<div class="row" data-bind="foreach: Panel">
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-pulse-strong" aria-hidden="true"></i></span>
+            <div>
+                <h12> <span>   % COVERTURA <BR>  DE PUBLICIDAD</span></h12>
+                <h2> <span align="center" data-bind="text: COVERTURA" style="color:blue"></span></h2>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-battery-empty" aria-hidden="true"></i></span>
+            <div>
+
+                <h12> <span> VALLAS <BR>  CON PROBLEMAS</span></h12>
+                <h2> <span align="center" data-bind="text: TOTAL_CONTRATOS_VENCIDOS" style="color:blue"></span></h2>
+
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-battery-low"></i></span>
+            <div>
+
+                <h12> <span>VALLAS <BR>  EN BUEN ESTADO</span></h12>
+                <h2> <span align="center" data-bind="text: TOTAL_CONTRATOS_PORVENCER" style="color:blue"></span></h2>
+
+
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+ 
+
+</div><!-- /.row -->*@
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">LISTADO DE VISITAS Y SUPERVISION </h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <form>
+                        <div class="form-group form-group-label">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#" id="test" class="fa fa-file-excel-o" onClick="javascript:fnExcelReport();">  Descargar Excel</a>
+
+
+                    <script lang="js">
+                        function fnExcelReport() {
+                            var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+                            tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+
+                            tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+
+                            tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+                            tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+
+                            tab_text = tab_text + "<table border='1px'>";
+                            tab_text = tab_text + $('#resultados').html();
+                            tab_text = tab_text + '</table></body></html>';
+
+                            var data_type = 'data:application/vnd.ms-excel';
+
+                            var ua = window.navigator.userAgent;
+                            var msie = ua.indexOf("MSIE ");
+
+                            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+                                if (window.navigator.msSaveBlob) {
+                                    var blob = new Blob([tab_text], {
+                                        type: "application/csv;charset=utf-8;"
+                                    });
+                                    navigator.msSaveBlob(blob, 'Listado Visitas .xls');
+                                }
+                            } else {
+                                $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
+                                $('#test').attr('download', 'Listado Visitas.xls');
+                            }
+
+                        }
+                    </script>
+                    <div class="table-responsive">
+
+
+                        <div class="form-panel tablaResultados">
+
+                            <table id="resultados" class="table table-bordered table-striped table-condensed cf display">
+
+                                <thead>
+                                    <tr>
+                                        @*<th>SEGUIMIENTO </th>*@
+                                        <th>NO VISITA</th>
+                                        @* <th>Proyecto</th>*@
+                                        <th>FECHA VISITA</th>
+                                        <th>PROYECTO</th>
+                                        <th>SUPERVISOR</th>
+                                        @*  <th>CODIGO PUBLICIDAD</th>*@
+                                        <th>DESCRIPCION PUBLICIDAD</th>
+                                        <th>PROBLEMA</th>
+                                        <th>OBSERVACIONES</th>
+                                        <th>RESULTADO</th>
+                                        <th>.</th>
+                                        @*<th>NoContrato</th>
+                                            <th>Proveedor</th>
+                                            <th>FechaInicio</th>
+                                            <th>FechaFIn</th>
+                                            <th>Latitud</th>
+                                            <th>Longitud</th>*@
+                                        @*  <th>Resultado</th>*@
+                                    </tr>
+                                </thead>
+
+                                @*<div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>*@
+                                <tbody data-bind="foreach: visitas">
+                                    <tr>
+
+                                        @*<td>  <a class="btn btn-primary"  href="~/Tareas/Create" style="width:90px">Crear Tarea</a></td>*@
+
+                                        @*  <td>  <a class="fa fa-hand-o-right" data-bind=" text: NoVisita" href="~/VistaDetalleVisita/VistaDetalleVisita"></a></td>*@
+
+                                        <td> <a class="btn btn-success" data-bind="attr: {href:'/VistaDetalleVisita/VistaDetalleVisita?_CodigoVisita=' + NoVisita}, text: NoVisita" style="width:60px"></a></td>
+
+                                        <td data-bind="text: FechaVisita"></td>
+                                        @*<td data-bind="text: Proyecto"></td>*@
+                                        <td data-bind="text: Descripcion"></td>
+                                        <td data-bind="text: Supervisor"></td>
+                                        @*<td data-bind="text: Codigo_Publicidad"></td>*@
+                                        <td data-bind="text: Valla"></td>
+                                        <td data-bind="text: ProblemaPublicidad"></td>
+                                        <td data-bind="text: Observaciones"></td>
+                                        <td data-bind="text: Resultado"></td>
+
+                                        <td><span data-bind="css: {'label-success' : Resultado == 'OK', 'label-danger' : Resultado == 'FAIL'  }" class="label"><span data-bind="text: Resultado"></span></span></td>
+
+                                        @*  <td> <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>*@
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>*@
+                @* <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>*@
+
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+
+</div><!-- /.col -->
+

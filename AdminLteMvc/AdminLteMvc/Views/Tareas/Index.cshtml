@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AdminLteMvc.Tarea>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Padre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo_Empleado_Asignado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Primer_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proyecto.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Padre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo_Empleado_Asignado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.Primer_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proyecto.Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Tarea }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Tarea }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Tarea })
+        </td>
+    </tr>
+}
+
+</table>
