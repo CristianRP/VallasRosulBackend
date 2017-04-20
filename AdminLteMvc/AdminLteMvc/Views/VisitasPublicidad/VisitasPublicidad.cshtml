@@ -2,7 +2,7 @@
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/visitas")  
  
-<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+@*<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
 <meta charset="UTF-8" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script src="~/Content/Scripts/jquery.dataTables.min.js"></script>
@@ -13,7 +13,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
 <script type="text/javascript" charset="utf8" src="~/plugins/datatables/jquery.dataTables.js"></script>
-<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />*@
 }
 @{
     ViewBag.Title = "CONTRATOS";
@@ -23,6 +23,37 @@
         new Crumb("Dashboard", "", "fa-dashboard")
     });
 }
+
+<script language="javascript">
+    function doSearch() {
+        var tableReg = document.getElementById('resultados');
+        var searchText = document.getElementById('searchTerm').value.toLowerCase();
+        var cellsOfRow = "";
+        var found = false;
+        var compareWith = "";
+
+        // Recorre todas las filas con contenido de la tabla
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            found = false;
+            // Recorre todas las celdas
+            for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Busca el texto en el contenido de la celda
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+    }
+</script>
  
 @*<div class="row" data-bind="foreach: Panel">
 
@@ -116,6 +147,39 @@
 
 </div><!-- /.row -->*@
 
+<style type="text/css">
+    .btn-label {
+        position: relative;
+        left: -12px;
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(0,0,0,0.15);
+        border-radius: 3px 0 0 3px;
+    }
+
+    .btn-labeled {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .btn {
+        margin-bottom: 10px;
+    }
+
+    .custab {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5% 0;
+        box-shadow: 3px 3px 2px #ccc;
+        transition: 0.5s;
+    }
+
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+</style>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -137,7 +201,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="#" id="test" class="fa fa-file-excel-o" onClick="javascript:fnExcelReport();">  Descargar Excel</a>
+                    <a href="#" id="test" class="fa fa-file-excel-o btn btn-success" onClick="javascript:fnExcelReport();">  Descargar Excel</a>
 
 
                     <script lang="js">
@@ -175,10 +239,18 @@
                     </script>
                     <div class="table-responsive">
 
-
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-8">
+                                    <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                    <INPUT placeholder="Buscar Proyecto " type="text" id="searchTerm" onkeyup="doSearch()">
+                                   
+                                </div>
+                            </div>
+                        </form>
                         <div class="form-panel tablaResultados">
 
-                            <table id="resultados" class="table table-bordered table-striped table-condensed cf display">
+                            <table id="resultados" class="table table-bordered table-striped table-condensed custab">
 
                                 <thead>
                                     <tr>

@@ -1,75 +1,78 @@
 ﻿@model AdminLteMvc.Contrato
 
 @{
-    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Contrato</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+<div class="panel panel-default">
+    <div class="panel-heading" style="color: green; font-size: xx-large; font-family: 'Times New Roman', Times, serif;  }">Contratos</div>
+        <div class="panel-body">
+        <div>
+            <h4>Datos del contrato</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaInicio)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaInicio)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaInicio)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaFIn)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaFIn)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaFIn)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaFIn)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Estado)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Proveedores.Nombre)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Proveedores.Nombre)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Proveedores.Nombre)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Proveedores.Nombre)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Proyectos_Ubicaciones.Descripcion)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Proyectos_Ubicaciones.Descripcion)
+                </dd>
 
-    </dl>
+            </dl>
+        </div>
+        <p>
+            <a class="btn btn-info" href="@Url.Action("Index","Contratoes")">Regresar al inicio</a>
+        </p>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CodigoContrato }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

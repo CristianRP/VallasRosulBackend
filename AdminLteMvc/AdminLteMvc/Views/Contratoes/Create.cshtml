@@ -90,16 +90,15 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-default" />
+                                    <input type="submit" value="Create" class="btn btn-facebook" />
                                 </div>
                             </div>
                         </div>
                     }
 
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
-
+                    <p>
+                        <a class="btn btn-info" href="@Url.Action("Index","Contratoes")">Regresar al inicio</a>
+                    </p>
 
                 </div><!-- /.table-responsive -->
             </div><!-- /.box-body -->

@@ -55,13 +55,13 @@
                                 <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
                                 <INPUT placeholder="Buscar Supervisor " type="text" id="searchTerm" onkeyup="doSearch()">
 
-                                <a href="~/Supervisors/Create"> <i class="glyphicon-list-alt"></i> Nuevo Supervisor </a>
+                                <a class="btn btn-info" href="~/Supervisors/Create"> <i class="glyphicon-plus"></i> Nuevo Supervisor </a>
                                 
                             </div>
                         </div>
                     </form>
                  
-                    <table id="datos" class="table">
+                    <table id="datos" class="table table-striped table-bordered table-hover custab">
                         <tr>
                             <th>
                                 @Html.DisplayNameFor(model => model.nombreUsuario)
@@ -117,11 +117,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CodigoExterno)
                                 </td>
-                                <td>
-                                    @Html.ActionLink("Actualizar", "Edit", new { id = item.idUsuario }) |
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.idUsuario }) |
-                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.idUsuario })*@
-                                </td>
+                                <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit"></span> Detalle </a></td>
                             </tr>
                         }
 

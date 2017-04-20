@@ -25,7 +25,7 @@ namespace AdminLteMvc
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/LoginImage/LoginImage"),
+                //LoginPath = new PathString("/LoginImage/LoginImage"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

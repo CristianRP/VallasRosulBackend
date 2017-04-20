@@ -13,5 +13,33 @@ namespace AdminLteMvc.Controllers
         {
             return View();
         }
+
+        PublicidadEntities_ dba = new PublicidadEntities_();
+
+        [HttpPost]
+        public ActionResult LoginImage(string username, string password)
+        {
+            var supervisor = (from user in dba.Supervisor
+                              where user.nombreUsuario.Equals(username)
+                              && user.userPassword.Equals(password)
+                              select user).FirstOrDefault();
+
+            if (supervisor != null)
+            {
+                Session["nombre"] = supervisor.primerNombre;
+                Session["apellido"] = supervisor.primerApellido;
+                return RedirectToAction("BusquedaPorMapaIndex", "BusquedaPorMapas");
+            }
+
+            return View();
+
+        }
+
+        public ActionResult CerrarSesion()
+        {
+            Session.Clear();
+            return RedirectToAction("LoginImage", "LoginImage");
+        }
+
     }
 }

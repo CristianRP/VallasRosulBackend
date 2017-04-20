@@ -136,5 +136,10 @@ namespace AdminLteMvc.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

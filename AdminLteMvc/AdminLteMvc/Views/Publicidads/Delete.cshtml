@@ -6,140 +6,146 @@
 }
 
 <h2>Delete</h2>
+<div class="panel panel-default">
+    <div class="panel-heading" style="color: green; font-size: xx-large; font-family: 'Times New Roman', Times, serif;  }">Publicidad</div>
+    <div class="panel-body">
+        <div>
+            <h4>Estas seguro de eliminar esta valla?</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Publicidad</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Latitud)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitud)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Latitud)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Latitud)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Longitud)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitud)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Longitud)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Longitud)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Estado)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Alto)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Alto)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Alto)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Alto)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ancho)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ancho)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ancho)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ancho)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Direccion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaCambioImagen)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaCambioImagen)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaCambioImagen)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaCambioImagen)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.imagen)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.imagen)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.imagen)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.imagen)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Demo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Demo)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Demo)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Demo)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CodigoBusqueda)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoBusqueda)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CodigoBusqueda)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CodigoBusqueda)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Calendario_Periodo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Calendario_Periodo)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Calendario_Periodo)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Calendario_Periodo)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Contrato.Descripcion)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Contrato.Descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Contrato.Descripcion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Contrato.Descripcion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Proyectos_Ubicaciones.Descripcion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Proyectos_Ubicaciones.Descripcion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ZonaGeografica.Descripcion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ZonaGeografica.Descripcion)
-        </dd>
+            </dl>
 
-    </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    
+                        <a class="btn btn-info" href="@Url.Action("Index","Publicidads")">Regresar al inicio</a>
+                    
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>

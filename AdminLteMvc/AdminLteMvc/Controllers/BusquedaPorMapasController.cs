@@ -11,6 +11,8 @@ namespace AdminLteMvc.Controllers
         // GET: BusquedaPorMapas
         public ActionResult BusquedaPorMapaIndex()
         {
+            ViewData["Nombre"] = Session["nombre"];
+            ViewData["Apellido"] = Session["apellido"];
             return View();
         }
     }

@@ -1,74 +1,77 @@
 ﻿@model AdminLteMvc.Proveedores
 
 @{
-    
+
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
+<div class="panel panel-default">
+    <div class="panel-heading" style="color: green; font-size: xx-large; font-family: 'Times New Roman', Times, serif;  }">Proveedores</div>
+    <div class="panel-body">
+        <h3 style="color: cornflowerblue">Datos del proveedor</h3>
+        <div>
 
-<h2>PROVEEDOR</h2>
-<div>
-  
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Contacto)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Contacto)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Contacto)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Contacto)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono1)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefono1)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono1)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Telefono1)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono2)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefono2)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono2)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Telefono2)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CorreoElectronico)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CorreoElectronico)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CorreoElectronico)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CorreoElectronico)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Observaciones)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Observaciones)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoExterno)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CodigoExterno)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CodigoExterno)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CodigoExterno)
+                </dd>
 
-    </dl>
+            </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Actualizar", "Edit", new { id = Model.Codigo }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <p>
+            <a class="btn btn-info" href="@Url.Action("Index","Proveedores")">Regresar al inicio</a>
+        </p>

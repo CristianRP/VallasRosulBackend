@@ -16,7 +16,7 @@ namespace AdminLteMvc
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "LoginImage", action = "LoginImage", id = UrlParameter.Optional }
             );
         }
     }

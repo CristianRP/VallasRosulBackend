@@ -5,79 +5,74 @@
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Supervisor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombreUsuario)
-        </dt>
+<div class="panel panel-default">
+    <div class="panel-heading" style="color: green; font-size: xx-large; font-family: 'Times New Roman', Times, serif;  }">Datos del supervisor</div>
+        <div class="panel-body">
+        <div>
+            <h4>Supervisor</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Nombre de usuario:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombreUsuario)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.nombreUsuario)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userPassword)
-        </dt>
+                <dt>
+                    Id. Dispositivo:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.userPassword)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.idDispositivo)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.idDispositivo)
-        </dt>
+                <dt>
+                    Primer nombre:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.idDispositivo)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.primerNombre)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.primerNombre)
-        </dt>
+                <dt>
+                    Segundo nombre:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.primerNombre)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.segundoNombre)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.segundoNombre)
-        </dt>
+                <dt>
+                    Primer apellido:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.segundoNombre)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.primerApellido)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.primerApellido)
-        </dt>
+                <dt>
+                    Segundo apellido:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.primerApellido)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.segundoApellido)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.segundoApellido)
-        </dt>
+                <dt>
+                    Código externo:
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.segundoApellido)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CodigoExterno)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoExterno)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CodigoExterno)
-        </dd>
-
-    </dl>
+            </dl>
+        </div>
+        <p>
+            <a class="btn btn-info" href="@Url.Action("Index","Supervisors")">Regresar al inicio</a>
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Actualizar", "Edit", new { id = Model.idUsuario }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

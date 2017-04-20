@@ -1,40 +1,62 @@
 ﻿@model IEnumerable<AdminLteMvc.ZonaGeografica>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style type="text/css">
+    .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+    .btn-labeled {padding-top: 0;padding-bottom: 0;}
+    .btn { margin-bottom:10px; }
+    .custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+    .custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+</style>
+<div class="panel panel-default">
+    <div class="panel-heading" style="color: green; font-size: xx-large; font-family: 'Times New Roman', Times, serif;  }">Zonas Geográficas</div>
+    <div class="panel-body">
+        <div class=".col-md-3 .col-md-offset-3">
+            <button type="button" class="btn btn-labeled btn-success btn-lg pull-right" onclick="window.location.href='/ZonaGeograficas/Create'">
+                <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Agregar zona
+            </button>
+        </div>
+        <table id="example" class="table table-striped table-bordered table-hover custab">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
 
-<h2>Index</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                        @*Html.ActionLink("Edit", "Edit", new { id = item.CodigoZona }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CodigoZona }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CodigoZona })*@
+                    <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.CodigoZona, "ZonaGeograficas")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a href="@Url.Action("Delete/"+item.CodigoZona, "ZonaGeograficas")" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Eliminar</a><!-- class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.CodigoZona, "ZonaGeograficas")"><span class="glyphicon glyphicon-edit"></span> Detalle</!--></td>
+                    
+                </tr>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th></th>
-    </tr>
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoZona }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoZona }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoZona })
-        </td>
-    </tr>
-}
-
-</table>

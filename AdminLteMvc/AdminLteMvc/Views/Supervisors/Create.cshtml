@@ -28,7 +28,7 @@
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                @Html.LabelFor(model => model.nombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Nombre de usuario:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.nombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.nombreUsuario, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Contraseña:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.idDispositivo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Id de dispositivo:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.idDispositivo, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.idDispositivo, "", new { @class = "text-danger" })
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.primerNombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Primer nombre:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.primerNombre, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.primerNombre, "", new { @class = "text-danger" })
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.segundoNombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Segundo nombre:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.segundoNombre, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.segundoNombre, "", new { @class = "text-danger" })
@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.primerApellido, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Primer apellido:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.primerApellido, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.primerApellido, "", new { @class = "text-danger" })
@@ -76,7 +76,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.segundoApellido, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <p class="control-label col-md-2">Segundo apellido:</p>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.segundoApellido, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.segundoApellido, "", new { @class = "text-danger" })
@@ -84,8 +84,8 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.CodigoExterno, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
+                                <p class="control-label col-md-2">Código externo:</p>
+                                <div class="col-md-10 span3" >
                                     @Html.EditorFor(model => model.CodigoExterno, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.CodigoExterno, "", new { @class = "text-danger" })
                                 </div>
@@ -93,15 +93,16 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Grabar" class="btn btn-default" />
+                                    <input type="submit" value="Guardar" class="btn btn-facebook" />
                                 </div>
                             </div>
                         </div>
                     }
 
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
+
+                    <p>
+                        <a class="btn btn-info" href="@Url.Action("Index","Supervisors")">Regresar al inicio</a>
+                    </p>
 
                     @section Scripts {
                         @Scripts.Render("~/bundles/jqueryval")

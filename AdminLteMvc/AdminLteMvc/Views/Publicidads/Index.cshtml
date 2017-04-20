@@ -1,118 +1,203 @@
 ﻿@model IEnumerable<AdminLteMvc.Publicidad>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Index</h2>
+<style type="text/css">
+    .btn-label {
+        position: relative;
+        left: -12px;
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(0,0,0,0.15);
+        border-radius: 3px 0 0 3px;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitud)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitud)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Alto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ancho)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCambioImagen)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.imagen)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Demo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodigoBusqueda)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Calendario_Periodo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrato.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
-        </th>
-        <th></th>
-    </tr>
+    .btn-labeled {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitud)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitud)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Alto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ancho)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCambioImagen)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.imagen)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Demo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoBusqueda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Calendario_Periodo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrato.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Proyectos_Ubicaciones.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZonaGeografica.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoPublicidad }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoPublicidad }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPublicidad })
-        </td>
-    </tr>
-}
+    .btn {
+        margin-bottom: 10px;
+    }
 
-</table>
+    .custab {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5% 0;
+        box-shadow: 3px 3px 2px #ccc;
+        transition: 0.5s;
+    }
+
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+</style>
+
+<script language="javascript">
+    function doSearch() {
+        var tableReg = document.getElementById('example2');
+        var searchText = document.getElementById('searchTerm').value.toLowerCase();
+        var cellsOfRow = "";
+        var found = false;
+        var compareWith = "";
+
+        // Recorre todas las filas con contenido de la tabla
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            found = false;
+            // Recorre todas las celdas
+            for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                // Busca el texto en el contenido de la celda
+                if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tableReg.rows[i].style.display = '';
+            } else {
+                // si no ha encontrado ninguna coincidencia, esconde la
+                // fila de la tabla
+                tableReg.rows[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">LISTADO DE PUBLICIDADES</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-8">
+                                <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                <INPUT placeholder="Buscar Proyecto " type="text" id="searchTerm" onkeyup="doSearch()">                    
+                                <a class="btn btn-info" href="~/Publicidads/Create"><i class="glyphicon-plus"></i> Nueva publicidad </a>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <table id="example2" class="table table-bordered table-striped custab" role="grid" aria-describedby="example2_info">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Latitud)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Longitud)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Alto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ancho)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Direccion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaCambioImagen)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.imagen)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Demo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CodigoBusqueda)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Calendario_Periodo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Contrato.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Latitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Longitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Alto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ancho)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaCambioImagen)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.imagen)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Demo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoBusqueda)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calendario_Periodo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Contrato.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Proyectos_Ubicaciones.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ZonaGeografica.Descripcion)
+                                </td>
+                                <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit"></span> Detalle </a><a class='btn btn-danger btn-xs' href="@Url.Action("Delete/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-erase"></span> Eliminar </a></td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+

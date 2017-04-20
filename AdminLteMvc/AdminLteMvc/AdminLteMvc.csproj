@@ -389,6 +389,7 @@
     <Content Include="Content\AdminLTE\img\Location-32.png" />
     <Content Include="Content\AdminLTE\img\location_delete-32.png" />
     <Content Include="Content\AdminLTE\img\Logo Grupo Rosul.png" />
+    <Content Include="Content\AdminLTE\img\logo_fondo.png" />
     <Content Include="Content\AdminLTE\img\MG_0021.jpg" />
     <Content Include="Content\AdminLTE\img\MISSION-128.png" />
     <Content Include="Content\AdminLTE\img\user-17-48.png" />
@@ -817,6 +818,7 @@
     <Content Include="bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="bootstrap\css\bootstrap.css.map" />
     <Content Include="bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\VallasWebApp.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\AdminLTE\app.min.js" />
     <Content Include="Scripts\AdminLTE\demo.js" />
@@ -1313,6 +1315,7 @@
     <Content Include="Scripts\AdminLTE\plugins\timepicker\bootstrap-timepicker.min.js" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\autenticacion.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\BusquedaPorMapaJS.js" />
@@ -1461,6 +1464,8 @@
     <Content Include="Views\Publicidads\Index.cshtml" />
     <Content Include="Views\Geoposicion\Index.cshtml" />
     <Content Include="Views\BusquedaPorMapasContratos\Index.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Publicidads\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
