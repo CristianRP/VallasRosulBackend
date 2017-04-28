@@ -67,9 +67,6 @@
                                 @Html.DisplayNameFor(model => model.nombreUsuario)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.userPassword)
-                            </th>
-                            <th>
                                 @Html.DisplayNameFor(model => model.idDispositivo)
                             </th>
                             <th>
@@ -84,9 +81,6 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.segundoApellido)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CodigoExterno)
-                            </th>
                             <th></th>
                         </tr>
 
@@ -96,28 +90,27 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.nombreUsuario)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.userPassword)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.idDispositivo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.primerNombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.segundoNombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.primerApellido)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.segundoApellido)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CodigoExterno)
-                                </td>
-                                <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit"></span> Detalle </a></td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.idDispositivo)
+                                                                </td>
+                                
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.primerNombre)
+                                                                </td>
+                                
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.segundoNombre)
+                                                                </td>
+                                
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.primerApellido)
+                                                                </td>
+                                
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.segundoApellido)
+                                                                </td>
+                                
+                                                                <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.idUsuario, "Supervisors")"><span class="glyphicon glyphicon-edit"></span> Detalle </a></td>
                             </tr>
                         }
 

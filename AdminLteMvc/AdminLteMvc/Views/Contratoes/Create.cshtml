@@ -1,9 +1,23 @@
-﻿@model AdminLteMvc.Contrato
+﻿<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+@model AdminLteMvc.Contrato
 
 @{
  
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
+
+<script>
+  $( function() {
+      $("#datepicker").datepicker(
+          "option", "dateFormat", "dd-mm-yy"
+      );
+      $("#datepicker2").datepicker({
+          dateFormat: "dd-MM-yy"
+      });
+  } );
+</script>
 <div class="row">
     <div class="col-md-12">
         <!-- TABLE: LATEST ORDERS -->
@@ -43,7 +57,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @id = "datepicker2" } })
                                     @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -51,10 +65,11 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FechaFIn, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.FechaFIn, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.FechaFIn, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.FechaFIn, new { htmlAttributes = new { @class = "form-control" , @id = "datepicker"} })
+                                   
                                 </div>
                             </div>
+
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.CodigoProveedor, "CodigoProveedor", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -71,11 +86,27 @@
                                     @Html.ValidationMessageFor(model => model.CodigoProyecto, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            @{
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "ACTIVO",
+                                    Value = "ACTIVO",
+                                    Selected = true
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "INACTIVO",
+                                    Value = "INACTIVO",
+                                    
+                                });
+                            }
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                                    @**Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })**@
+                                    @Html.DropDownListFor(model => model.Estado, listItems, "-- Seleccionar estado --")
                                     @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
                                 </div>
                             </div>

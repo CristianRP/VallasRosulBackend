@@ -7,6 +7,10 @@
     self.ListadoVallas = ko.observableArray();
     self.PagosPublicidad = ko.observableArray();
     self.idPublicidad = ko.observable();
+    self.opciones = ['SI', 'NO'];
+    self.selectedOp = ko.observable();
+    self.estados = ['ACTIVO', 'INACTIVO'];
+    self.selectedEstado = ko.observable();
 
     var host = '200.6.245.76:8095';//document.location.host;
    
@@ -55,7 +59,7 @@
         self.contratoCodigo.CodigoContrato(item.CodigoPublicidad);
     }
 
-    self.addEvento = function (form,item)  {
+    self.addEvento = function (form, item) {
         
         var e = {
             CodigoContrato: self.contratoCodigo.CodigoContrato(), ////observable
@@ -65,7 +69,12 @@
             NoFactura: self.newEvento.NoFactura(),
             Estado: self.newEvento.Estado()
         }
-        ajaxHelper(PagosUri + '?codigoPublicidad=' + e.CodigoContrato + '&fecha=' + e.Fecha + '&monto=' + e.Monto + '&pagado=' + e.Pagado + '&noFactura=' + e.NoFactura + '&estado=' + e.Estado, 'POST').done(function (item) {
+        var year = e.Fecha.split('/')[2];
+        var day = e.Fecha.split('/')[1];
+        var month = e.Fecha.split('/')[0];
+        var dateFormat = day + '/' + month + '/' + year;
+        
+        ajaxHelper(PagosUri + '?codigoPublicidad=' + e.CodigoContrato + '&fecha=' + dateFormat + '&monto=' + e.Monto + '&pagado=' + self.selectedOp() + '&noFactura=' + e.NoFactura + '&estado=' + self.selectedEstado(), 'POST').done(function (item) {
         
         getAllEvents();
 
@@ -94,7 +103,11 @@
     self.selectEvent = function (item) {
 
         self.selectedEvent.id(item.id);
-        self.selectedEvent.Fecha(item.Fecha);
+        var year = item.Fecha.split('T')[0].split('-')[0];
+        var day = item.Fecha.split('T')[0].split('-')[2];
+        var month = item.Fecha.split('T')[0].split('-')[1];
+        var dateFormat = month + '/' + day + '/' + year;
+        self.selectedEvent.Fecha(dateFormat);
         self.selectedEvent.Monto(item.Monto);
         self.selectedEvent.Pagado(item.Pagado);
         self.selectedEvent.NoFactura(item.NoFactura);
@@ -113,9 +126,13 @@
                Estado: self.selectedEvent.Estado()
             //CategoriaId: self.selectedEvent.Categoria().Id
         }
+        var year = e.Fecha.split('/')[2];
+        var day = e.Fecha.split('/')[1];
+        var month = e.Fecha.split('/')[0];
+        var dateFormat = year + '-' + month + '-' + day;
         //alert(e.Fecha.split('T')[0] + ' ' + e.NoFactura);
         //ajaxHelper(EventosUri + self.selectedEvent.Id, 'PUT', e).done(function (data) {
-        ajaxHelper(PagosUpdateUri + '?fecha=' + e.Fecha.split('T')[0] + '&monto=' + e.Monto + '&pagado=' + e.Pagado + '&noFactura=' + e.NoFactura + '&codigoPago=' + e.id + '', 'POST').done(function (item) {
+        ajaxHelper(PagosUpdateUri + '?fecha=' + dateFormat + '&monto=' + e.Monto + '&pagado=' + e.Pagado + '&noFactura=' + e.NoFactura + '&codigoPago=' + e.id + '&estado=' + e.Estado, 'POST').done(function (item) {
             ajaxHelper(PagosPublicidadUri + '?codigoPublicidad=' + self.idPublicidad(), 'GET').done(function (data) {
                 self.PagosPublicidad(data);
             });
@@ -162,6 +179,10 @@
 
     // Recuperar datos iniciales
     getAllContratosVistaSP();
+
+   
+    self.estados = ko.observableArray(['ACTIVO', 'INACTIVO']);
+
 
 };
 

@@ -13,5 +13,11 @@ namespace AdminLteMvc.Controllers
         {
             return View();
         }
+
+        // GET: ReportePagos
+        public ActionResult ReportePagos()
+        {
+            return View();
+        }
     }
 }

@@ -78,7 +78,7 @@ namespace AdminLteMvc.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodigoProyecto,CodigoExterno,Descripcion")] Proyectos_Ubicaciones proyectos_Ubicaciones)
+        public ActionResult Edit([Bind(Include = "CodigoProyecto,Descripcion")] Proyectos_Ubicaciones proyectos_Ubicaciones)
         {
             if (ModelState.IsValid)
             {
