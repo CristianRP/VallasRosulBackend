@@ -1337,6 +1337,23 @@
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\Mapa.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\pivot-table\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\pivot-table\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\pivot-table\pivottable\c3_renderers.js" />
+    <Content Include="Scripts\pivot-table\pivottable\c3_renderers.min.js" />
+    <Content Include="Scripts\pivot-table\pivottable\d3_renderers.js" />
+    <Content Include="Scripts\pivot-table\pivottable\d3_renderers.min.js" />
+    <Content Include="Scripts\pivot-table\pivottable\export_renderers.js" />
+    <Content Include="Scripts\pivot-table\pivottable\export_renderers.min.js" />
+    <Content Include="Scripts\pivot-table\pivottable\gchart_renderers.js" />
+    <Content Include="Scripts\pivot-table\pivottable\gchart_renderers.min.js" />
+    <Content Include="Scripts\pivot-table\pivottable\nrecopivottableext.css" />
+    <Content Include="Scripts\pivot-table\pivottable\nrecopivottableext.js" />
+    <Content Include="Scripts\pivot-table\pivottable\pivot.css" />
+    <Content Include="Scripts\pivot-table\pivottable\pivot.js" />
+    <Content Include="Scripts\pivot-table\pivottable\pivot.min.css" />
+    <Content Include="Scripts\pivot-table\pivottable\pivot.min.js" />
+    <Content Include="Scripts\pivot-table\sampledata.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -1466,6 +1483,7 @@
     <Content Include="Views\BusquedaPorMapasContratos\Index.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Publicidads\Test.cshtml" />
+    <Content Include="Views\ContratosPagosJS\ReportePagos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
