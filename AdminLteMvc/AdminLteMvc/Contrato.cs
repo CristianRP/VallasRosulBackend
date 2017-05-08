@@ -11,7 +11,8 @@ namespace AdminLteMvc
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contrato
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,11 +24,14 @@ namespace AdminLteMvc
     
         public int CodigoContrato { get; set; }
         public string Descripcion { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> FechaInicio { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> FechaFIn { get; set; }
         public Nullable<int> CodigoProveedor { get; set; }
         public Nullable<int> CodigoProyecto { get; set; }
         public string Estado { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public Nullable<decimal> Precio { get; set; }
     
         public virtual Proveedores Proveedores { get; set; }

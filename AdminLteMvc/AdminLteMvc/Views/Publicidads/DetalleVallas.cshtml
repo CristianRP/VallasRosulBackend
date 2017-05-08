@@ -1,0 +1,147 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/vallasDetail")
+}
+
+@{
+    ViewBag.Title = "DetalleVallas";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>DetalleVallas</h2>
+
+<div class="box-footer" data-bind="foreach: publicidades">
+    <div class="row">
+
+        <div class="col-sm-3 col-xs-4">
+
+            <div class="description-block border-right">
+                <span class="description-percentage text-green"><i class="fa fa-caret-left"></i> </span>
+                <h5 class="description-header">NO VISITA</h5>
+
+                <span data-bind="text: CodigoPublicidad"></span>
+
+            </div><!-- /.description-block -->
+
+
+        </div><!-- /.col -->
+        <div class="col-sm-3 col-xs-6">
+
+            <div class="description-block border-right">
+                <span class="description-percentage text-green"><i class="fa fa-caret-left"></i> </span>
+                <h5 class="description-header">PROYECTO</h5>
+
+                <span data-bind="text: Descripcion"></span>
+
+            </div><!-- /.description-block -->
+        </div><!-- /.col -->
+
+        <div class="col-sm-3 col-xs-6">
+            <div class="description-block border-right">
+                <span class="description-percentage text-green"><i class="fa fa-caret-left"></i> </span>
+                <h5 class="description-header">ESTADO</h5>
+
+                <span data-bind="text:Estado"></span>
+
+            </div><!-- /.description-block -->
+        </div><!-- /.col -->
+
+
+    </div><!-- /.row -->
+</div><!-- /.box-footer -->
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+
+            <div class="box-header with-border">
+                <h3 class="box-title">Bandeja de Entrada</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <form data-bind="foreach: publicidades">
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Fecha Visita </label>
+                            <span data-bind="text:FechaCambioImagen"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Descripcion Publicidad </label>
+                            <span data-bind="text:Descripcion"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Dirección </label>
+                            <span data-bind="text:Direccion"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Codigo de Busqueda </label>
+                            <span data-bind="text:CodigoBusqueda"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Descripción del contrato </label>
+                            <span data-bind="text:DescripcionContrato"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Demo </label>
+                            <span data-bind="text:Demo"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Periodo </label>
+                            <span data-bind="text:Calendario_Periodo"></span>
+
+                        </div>
+
+                    </form>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+
+            <div class="box-footer clearfix">
+                <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Colocar Incidente</a>
+                <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Ver Mas</a>
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <div class="col-md-6">
+        <!-- PRODUCT LIST -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Imagen capturada en visita</h3>
+
+
+
+                <div class="form-group" data-bind="foreach: publicidades">
+
+                    @*<span data-bind="text:Imagen"></span>*@
+                    <img data-bind="attr: {src: 'data: image/png;base64,' + Imagen }" style="width:450px;height:400px" />
+
+                </div>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+
+<label data-bind="text: Longitud()" id="lblLAt"></label>
+<label data-bind="text: Latitud()" id="lblLAt"></label>
+
+<div id="map" data-bind="style:{width:'800px',height:'500px'}"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHguNzrySXRe68RbN26z9JSzKpz4XYPLc"
+        async defer></script>

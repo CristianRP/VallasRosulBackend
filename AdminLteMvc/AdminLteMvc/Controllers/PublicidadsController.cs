@@ -141,5 +141,10 @@ namespace AdminLteMvc.Controllers
         {
             return View();
         }
+
+        public ActionResult DetalleVallas(int idValla)
+        {
+            return View();
+        }
     }
 }

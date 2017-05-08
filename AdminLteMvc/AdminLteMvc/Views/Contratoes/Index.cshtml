@@ -107,6 +107,11 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FechaInicio)
+                                    @*@if (item.FechaInicio.HasValue)
+                                    {
+                                        item.FechaInicio.Value.ToString("MM/dd/yyyy");
+                                        @Html.DisplayFor(modelItem => item.FechaInicio.Value.ToString("MM/dd/yyyy"));
+                                    }*@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FechaFIn)

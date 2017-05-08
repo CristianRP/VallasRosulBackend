@@ -191,7 +191,7 @@
                                 <tbody data-bind="foreach: ContratosVistaSP">
                                     <tr>
                                         <td><small><a class="btn btn-success" data-bind="click: $parent.getListadoVallas" >Vallas <span class="fa fa-bookmark" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>
-                                        <td><small><a class='btn btn-info' href="~/Publicidads/Index"><span class="glyphicon glyphicon-edit"> Contratos</span></a> </small></td>
+                                        <td><small><a class='btn btn-info' href="~/Contratoes/Index"><span class="glyphicon glyphicon-edit"> Contratos</span></a> </small></td>
                                         @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
 
                                         <td data-bind="text: CodigoContrato"></td>
@@ -227,10 +227,10 @@
         </div><!-- /.col -->
     </div><!-- /.col -->
 
+<!--LISTADOS DE VALLAS -->
 <h3>LISTADO DE VALLAS</h3>
 <div class="row">
     <div class="col-md-12">
-        <!-- TABLE: LISTADO DE CONTRATOS -->
         <div class="box box-info ">
             
                 <div class="box-header with-border" style="background-color:burlywood">
@@ -261,7 +261,7 @@
                                     @*<th>SEGUIMIENTO </th>*@
                                     <th>VER PAGOS</th>
                                     <th>AGREGAR PAGOS</th>
-
+                                    <th>VER DETALLE</th>
 
                                     @* <th>Proyecto</th>*@
                                     <th>CODIGO PUBLICIDAD</th>
@@ -287,6 +287,7 @@
                                 <tr>
                                     <td><small><a class="btn btn-success" href="#" data-bind="click: $parent.getPagosPublicidad" data-target="#editarEvento">Pagos <span class="fa fa-credit-card" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>
                                     <td><small><a class="btn btn-success" style="margin-left: 0%" data-toggle="modal" data-target="#agregarEvento" data-bind="click: $parent.setContratoCodigo">Nuevo <span class="glyphicon glyphicon-plus" style="margin-left: 0%" data-toggle="modal"></span></a> </small></td>
+                                    <td><small><a class="btn btn-success" style="margin-left: 0%" data-bind="attr: {href:'/Publicidads/DetalleVallas?idValla=' + CodigoPublicidad}, text: CodigoPublicidad">Detalle <span class="glyphicon glyphicon-book" style="margin-left: 0%" ></span></a> </small></td>
                                     @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
 
                                     <td data-bind="text: CodigoPublicidad"></td>
@@ -318,6 +319,7 @@
     </div><!-- /.col -->
 </div><!-- /.col -->
 
+<!-- DETALLE DE PAGOS-->
 <h3>DETALLE DE PAGOS</h3>
      <div class="row" style="background-color:azure">
         <div class="col-md-12">
@@ -401,6 +403,8 @@
             </div><!-- /.box-footer -->
         </div><!-- /.box -->
     </div><!-- /.col -->
+
+
     <!-- MODAL PARA AGREGAR EVENTOS-->
     <div class="modal fade" id="agregarEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -561,8 +565,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </div>
             </form>

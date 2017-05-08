@@ -69,6 +69,9 @@ namespace AdminLteMvc
             bundles.Add(new ScriptBundle("~/bundles/GeoposicionContratoJavaScript").Include(
        "~/Scripts/AdminLTE/GeoposicionContratoJS.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vallasDetail").Include(
+                       "~/Scripts/DetallePublicidad.js"));
+
 
         }
     }

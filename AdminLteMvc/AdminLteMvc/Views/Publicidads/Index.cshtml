@@ -95,28 +95,22 @@
                     <table id="example2" class="table table-bordered table-striped custab" role="grid" aria-describedby="example2_info">
                         <tr>
                             <th>
+                                Código de busqueda
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.Descripcion)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Latitud)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Longitud)
+                                Descripción del Contrato
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Estado)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Alto)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Ancho)
-                            </th>
-                            <th>
                                 @Html.DisplayNameFor(model => model.Direccion)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.FechaCambioImagen)
+                                Fecha de cambio de imagen
                             </th>
                             @*<th>
                                     @Html.DisplayNameFor(model => model.imagen)
@@ -125,19 +119,25 @@
                                 @Html.DisplayNameFor(model => model.Demo)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CodigoBusqueda)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Calendario_Periodo)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Contrato.Descripcion)
+                                Periodo de supervisión
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Proyectos_Ubicaciones.Descripcion)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.ZonaGeografica.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Latitud)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Longitud)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Alto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ancho)
                             </th>
                             <th></th>
                         </tr>
@@ -146,22 +146,16 @@
                         {
                             <tr>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoBusqueda)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Descripcion)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Latitud)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Longitud)
+                                    @Html.DisplayFor(modelItem => item.Contrato.Descripcion)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Estado)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Alto)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ancho)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Direccion)
@@ -176,13 +170,7 @@
                                     @Html.DisplayFor(modelItem => item.Demo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CodigoBusqueda)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.Calendario_Periodo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Contrato.Descripcion)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Proyectos_Ubicaciones.Descripcion)
@@ -190,7 +178,19 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ZonaGeografica.Descripcion)
                                 </td>
-                                <td class="text-center"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit"></span> Detalle </a><a class='btn btn-danger btn-xs' href="@Url.Action("Delete/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-erase"></span> Eliminar </a></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Latitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Longitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Alto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ancho)
+                                </td>
+                                <td class="text-justify"><a class='btn btn-info btn-xs' href="@Url.Action("Edit/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit">Editar</span></a> <a class='btn btn-info btn-xs' href="@Url.Action("Details/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-edit"></span> Detalle </a><a class='btn btn-danger btn-xs' href="@Url.Action("Delete/"+item.CodigoPublicidad, "Publicidads")"><span class="glyphicon glyphicon-erase"></span> Eliminar </a></td>
                             </tr>
                         }
 

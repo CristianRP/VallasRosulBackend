@@ -1320,6 +1320,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\BusquedaPorMapaJS.js" />
     <Content Include="Scripts\ContratosPagosJS.js" />
+    <Content Include="Scripts\DetallePublicidad.js" />
     <Content Include="Scripts\GeoposicionJS.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -1332,6 +1333,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryui-custom-date.js" />
     <Content Include="Scripts\knockout-3.4.1.debug.js" />
     <Content Include="Scripts\knockout-3.4.1.js" />
     <Content Include="Scripts\login.js" />
@@ -1484,6 +1486,7 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Publicidads\Test.cshtml" />
     <Content Include="Views\ContratosPagosJS\ReportePagos.cshtml" />
+    <Content Include="Views\Publicidads\DetalleVallas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

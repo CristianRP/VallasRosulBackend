@@ -11,7 +11,8 @@ namespace AdminLteMvc
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Publicidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,6 +31,7 @@ namespace AdminLteMvc
         public string Alto { get; set; }
         public string Ancho { get; set; }
         public string Direccion { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d/MM/yyyy}")]
         public Nullable<System.DateTime> FechaCambioImagen { get; set; }
         public byte[] imagen { get; set; }
         public string Demo { get; set; }
