@@ -1,6 +1,7 @@
 ﻿<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="~/Scripts/moment.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 @section scripts {
     @Scripts.Render("~/bundles/knockout")
@@ -33,9 +34,9 @@
 </script>
  
 <script language="javascript">
-    function doSearch(id) {
+    function doSearch(id, input) {
             var tableReg = document.getElementById(id);
-            var searchText = document.getElementById('searchTerm').value.toLowerCase();
+            var searchText = document.getElementById(input).value.toLowerCase();
             var cellsOfRow = "";
             var found = false;
             var compareWith = "";
@@ -141,7 +142,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-8">
                                     <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
-                                    <INPUT placeholder="Buscar Contrato " type="text" id="searchTerm" onkeyup="doSearch('datos')">
+                                    <INPUT placeholder="Buscar Contrato " type="text" id="txtSearch" onkeyup="doSearch('datos', 'txtSearch')">
                                     <a href="~/Contratoes/Create" class="btn btn-info"><i class="glyphicon-plus"></i> Nuevo Contrato </a>
                                 </div>
                             </div>
@@ -239,7 +240,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-sm-8">
                                 <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
-                                <INPUT placeholder="Buscar Contrato " type="text" id="searchTerm" onkeyup="doSeach('vallas')">
+                                <INPUT placeholder="Buscar valla " type="text" id="searchTerm" onkeyup="doSearch('vallas', 'searchTerm')">
                                 <a class="btn btn-info" href="~/Publicidads/Create"><i class="glyphicon-plus"></i> Nueva publicidad </a>
                             </div>
                         </div>
@@ -255,7 +256,7 @@
                 <div class="table-responsive">
                     <form></form>
                     <div class="form-panel tablaResultados">
-                        <table id="vallas"  class="table table-bordered table-striped table-condensed cf display custab">
+                        <table id="vallas" data-name="vallas"  class="table table-bordered table-striped table-condensed cf display custab">
 
                             <thead>
                                 <tr>
@@ -320,6 +321,31 @@
     </div><!-- /.col -->
 </div><!-- /.col -->
 
+<script type="text/javascript">
+    // load a locale
+    numeral.register('locale', 'gt', {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'm',
+            billion: 'b',
+            trillion: 't'
+        },
+        ordinal: function (number) {
+            return number === 1 ? 'er' : 'ème';
+        },
+        currency: {
+            symbol: 'Q'
+        }
+    });
+
+    // switch between locales
+    numeral.locale('gt');
+</script>
+
 <!-- DETALLE DE PAGOS-->
 <h3>DETALLE DE PAGOS</h3>
      <div class="row" style="background-color:azure">
@@ -330,8 +356,8 @@
                     <div class="form-group form-group-label">
                         <div class="row">
                             <div class="col-lg-6 col-sm-8">
-                                @*<label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
-                                    <INPUT placeholder="Buscar Contrato " type="text" id="searchTerm" onkeyup="doSearch()">*@
+                                <label class="floating-label" for="searchTerm"> &nbsp <span class="glyphicon glyphicon-search"></span> </label>
+                                    <INPUT placeholder="Buscar Contrato " type="text" id="txtPagos" onkeyup="doSearch('pagos', 'txtPagos')">
 
                                 @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
                             </div>
@@ -347,7 +373,7 @@
 
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="pagos"  class="table no-margin">
+                        <table id="pagos" data-name="pagos"  class="table no-margin">
                             <thead>
                                 <tr>
                                     <th>EDITAR</th>
@@ -371,7 +397,7 @@
                                     @*  <th>Resultado</th>*@
                                 </tr>
                             </thead>
-
+                            
                             <tbody data-bind="foreach: PagosPublicidad">
                                 <tr>
                                     <td><small><a  class="btn btn-success" href="#" data-bind="click: $parent.selectEvent" data-toggle="modal" data-target="#editarEvento"><span class="fa fa-pencil-square-o"></span></a></small></td>
@@ -379,7 +405,7 @@
 
                                         <td class="text-center" data-bind="text: id"></td>
                                         <td data-bind="text: moment(Fecha).format('L')"></td>
-                                        <td data-bind="text: Monto"></td>
+                                        <td data-bind="text: numeral(Monto).format('$0,0.00')"></td>
                                         <td data-bind="text: Pagado"></td>
                                         <td data-bind="text: NoFactura"></td>
 

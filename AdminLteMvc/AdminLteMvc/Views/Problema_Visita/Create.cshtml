@@ -34,10 +34,27 @@
                                 </div>
                             </div>
 
+                            @{
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "ACTIVO",
+                                    Value = "ACTIVO",
+                                    Selected = true
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "INACTIVO",
+                                    Value = "INACTIVO",
+
+                                });
+                            }
+
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                                    @**Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })**@
+                                    @Html.DropDownListFor(model => model.Estado, listItems, "-- Seleccionar estado --")
                                     @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
                                 </div>
                             </div>
