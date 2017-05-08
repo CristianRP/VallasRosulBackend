@@ -1,4 +1,6 @@
-﻿@section scripts {
+﻿<script src="~/Scripts/moment.min.js"></script>
+
+@section scripts {
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/visitas")  
  
@@ -286,7 +288,7 @@
 
                                         <td> <a class="btn btn-success" data-bind="attr: {href:'/VistaDetalleVisita/VistaDetalleVisita?_CodigoVisita=' + NoVisita}, text: NoVisita" style="width:60px"></a></td>
 
-                                        <td data-bind="text: FechaVisita"></td>
+                                        <td data-bind="text: moment(FechaVisita).format('MMMM Do YYYY, h:mm:ss a')"></td>
                                         @*<td data-bind="text: Proyecto"></td>*@
                                         <td data-bind="text: Descripcion"></td>
                                         <td data-bind="text: Supervisor"></td>

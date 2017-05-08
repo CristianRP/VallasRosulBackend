@@ -1,4 +1,4 @@
-﻿
+﻿<script src="~/Scripts/moment.min.js"></script>
 @section scripts {
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/MapaProyecto")
@@ -132,8 +132,8 @@
                                         @*<td data-bind="text: Codigo_Publicidad"></td>*@
                                        
                                
-                                        <td data-bind="text: FechaInicio"></td>
-                                        <td data-bind="text: FechaInicio"></td>
+                                        <td data-bind="text: moment(FechaInicio).format('L')"></td>
+                                        <td data-bind="text: moment(FechaInicio).format('L')"></td>
                                         <td data-bind="text: Contrato"></td>
                                         <td data-bind="text: Proveedor"></td>
                                         

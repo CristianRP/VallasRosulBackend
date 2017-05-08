@@ -1,5 +1,6 @@
 ﻿<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/Scripts/moment.js"></script>
 
 @section scripts {
     @Scripts.Render("~/bundles/knockout")
@@ -194,17 +195,17 @@
                                         <td><small><a class='btn btn-info' href="~/Contratoes/Index"><span class="glyphicon glyphicon-edit"> Contratos</span></a> </small></td>
                                         @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
 
-                                        <td data-bind="text: CodigoContrato"></td>
+                                        <td class="text-center" data-bind="text: CodigoContrato"></td>
                                         <td data-bind="text: Descripcion"></td>
 
-                                        <td data-bind="text: FechaInicio"></td>
-                                        <td data-bind="text: FechaFIn"></td>
-                                        <td data-bind="text: CodigoProveedor"></td>
+                                        <td data-bind="text: moment(FechaInicio).format('L')"></td>
+                                        <td data-bind="text: moment(FechaFIn).format('L')"></td>
+                                        <td class="text-center" data-bind="text: CodigoProveedor"></td>
 
                                         <td data-bind="text: Nombre"></td>
-                                        <td data-bind="text: CodigoProyecto"></td>
+                                        <td class="text-center" data-bind="text: CodigoProyecto"></td>
                                         <td data-bind="text: Descripcion1"></td>
-                                        <td data-bind="text: NumeroVallas"></td>
+                                        <td class="text-center" data-bind="text: NumeroVallas"></td>
                                         <td data-bind="text: Vencimiento"></td>
                                         <td data-bind="text: Estado"></td>
 
@@ -287,19 +288,19 @@
                                 <tr>
                                     <td><small><a class="btn btn-success" href="#" data-bind="click: $parent.getPagosPublicidad" data-target="#editarEvento">Pagos <span class="fa fa-credit-card" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>
                                     <td><small><a class="btn btn-success" style="margin-left: 0%" data-toggle="modal" data-target="#agregarEvento" data-bind="click: $parent.setContratoCodigo">Nuevo <span class="glyphicon glyphicon-plus" style="margin-left: 0%" data-toggle="modal"></span></a> </small></td>
-                                    <td><small><a class="btn btn-success" style="margin-left: 0%" data-bind="attr: {href:'/Publicidads/DetalleVallas?idValla=' + CodigoPublicidad}, text: CodigoPublicidad">Detalle <span class="glyphicon glyphicon-book" style="margin-left: 0%" ></span></a> </small></td>
+                                    <td><small><a class="btn btn-success" style="margin-left: 0%" data-bind="attr: {href:'/Publicidads/DetalleVallas?idValla=' + CodigoPublicidad}">Detalle <span class="glyphicon glyphicon-book" style="margin-left: 0%" ></span></a> </small></td>
                                     @*<a href="~/Contratoes/Index"><i class="glyphicon-list-alt"></i> Nuevo Contrato </a>*@
 
-                                    <td data-bind="text: CodigoPublicidad"></td>
+                                    <td class="text-center" data-bind="text: CodigoPublicidad"></td>
                                     <td data-bind="text: Descripcion"></td>
 
                                     <td data-bind="text: Estado"></td>
                                     <td data-bind="text: Direccion"></td>
-                                    <td data-bind="text: FechaCambioImagen"></td>
+                                    <td data-bind="text: moment(FechaCambioImagen).format('L')"></td>
 
                                     <td data-bind="text: Demo"></td>
-                                    <td data-bind="text: CodigoBusqueda"></td>
-                                    <td data-bind="text: Calendario_Periodo"></td>
+                                    <td class="text-center" data-bind="text: CodigoBusqueda"></td>
+                                    <td class="text-right" data-bind="text: Calendario_Periodo"></td>
 
                                     @*<td><span data-bind="css: {'label-success' : Resultado == 'OK', 'label-danger' : Resultado == 'FAIL'  }" class="label"><span data-bind="text: Resultado"></span></span></td>*@
 
@@ -376,8 +377,8 @@
                                     <td><small><a  class="btn btn-success" href="#" data-bind="click: $parent.selectEvent" data-toggle="modal" data-target="#editarEvento"><span class="fa fa-pencil-square-o"></span></a></small></td>
                                     @*<td><small><a class="btn btn-success" href="#" data-bind="click: $parent.contratosPagos" data-target="#editarEvento">Pagos <span class="fa fa-credit-card" style="margin-left: 0%" data-toggle="modal"></span></a></small></td>*@
 
-                                        <td data-bind="text: id"></td>
-                                        <td data-bind="text: Fecha"></td>
+                                        <td class="text-center" data-bind="text: id"></td>
+                                        <td data-bind="text: moment(Fecha).format('L')"></td>
                                         <td data-bind="text: Monto"></td>
                                         <td data-bind="text: Pagado"></td>
                                         <td data-bind="text: NoFactura"></td>

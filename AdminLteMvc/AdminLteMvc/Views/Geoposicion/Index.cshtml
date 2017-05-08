@@ -134,8 +134,8 @@
                                         @*<td data-bind="text: Valla"></td>*@
 
                                         <td data-bind="text: VencimientoTarea"></td>
-                                        <td data-bind="text: FechaInicioAlerta"></td>
-                                        <td data-bind="text: FechaFinAlerta"></td>
+                                        <td data-bind="text: moment(FechaInicioAlerta).format('L')"></td>
+                                        <td data-bind="text: moment(FechaFinAlerta).format('L')"></td>
                                         <td data-bind="text: DescripcionPublicidad"></td>
                                         <td data-bind="text: DireccionPublicidad"></td>
                                         <td data-bind="text: MedidasPublicidad"></td>
